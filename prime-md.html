@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="pt-BR">
+<!--
+  P.R.I.M.E. MD | Página integrada ao site Dr. Marco Demange
+  UX/UI v4: fundo do Hero com imagem responsiva e refinamentos de conteúdo.
+  Conteúdo e design interno: preservados do material P.R.I.M.E. MD fornecido.
+  Header/menu e rodapé: reutilizados do novo index do demange.com.br.
+  Links do menu apontam para as seções correspondentes da página inicial.
+-->
+
+<head>
+  <!-- Versão leve: mantém Inter + Playfair Display do projeto original; sem animações de scroll, blur ou efeitos pesados. -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>P.R.I.M.E. MD | Dr. Marco Demange</title>
+  <meta name="description" content="P.R.I.M.E. MD ; programa assistencial que integra protocolos baseados em evidências ao longo da jornada perioperatória." />
+  <link rel="icon" type="image/png" href="https://www.demange.com.br/src/seo_imgs-07.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+
+    * { box-sizing: border-box; }
+    html { overflow-x: hidden; background: #f7f9f9; }
+    body {
+      margin: 0;
+      color: #11212b;
+      background: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* Header simples e leve */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 1px solid #e5ebed;
+    }
+    .nav-shell {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo img { height: 62px; width: auto; display: block; }
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 30px;
+    }
+    .desktop-nav a {
+      position: relative;
+      margin-left: 30px;
+      color: #43535d;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      white-space: nowrap;
+    }
+    .desktop-nav a:hover,
+    .desktop-nav a.active { color: #0b2838; }
+    .desktop-nav a.active:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 1px;
+      background: #63bda9;
+    }
+    .contact-pill {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 24px;
+      background: #0b2838;
+      color: #fff !important;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+    }
+    .contact-pill:hover { background: #10384b; }
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid #dce4e7;
+      border-radius: 50%;
+      background: #fff;
+      color: #0b2838;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-btn svg { width: 22px; height: 22px; }
+    .mobile-nav { display: none; border-top: 1px solid #e7edef; padding: 12px 0 20px; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      padding: 13px 14px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #43535d;
+    }
+    .mobile-nav a:hover { background: #f5f8f8; color: #0b2838; }
+    .mobile-nav .contact-pill { margin-top: 8px; color: #fff; }
+
+    /* Hero: mesma identidade, sem filtros ou animações */
+    .hero {
+      position: relative;
+      min-height: 680px;
+      padding: 165px 0 100px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      background-image: url('src/fundoprime.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .hero:after {
+      content: "PRIME";
+      position: absolute;
+      right: -25px;
+      bottom: -75px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 260px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      color: rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1280px;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 24px;
+      position: relative;
+      color: rgba(255,255,255,.76);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+    .hero h1 {
+      max-width: 790px;
+      margin-bottom: 28px;
+      font-size: 82px;
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+    .hero-quote {
+      max-width: 820px;
+      margin-bottom: 0;
+      color: rgba(255,255,255,.91);
+      font-size: 21px;
+      line-height: 1.75;
+    }
+
+    /* Seções */
+    .section { position: relative; padding: 120px 0; }
+    .section-header { max-width: 820px; margin-bottom: 64px; }
+    .section-kicker {
+      display: block;
+      margin-bottom: 16px;
+      color: #63bda9;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      margin-bottom: 22px;
+      color: #0b2838;
+      font-size: 58px;
+    }
+    .section-rule { width: 58px; height: 3px; margin-top: 26px; background: #63bda9; }
+
+    /* Pilares */
+    .pillars {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid rgba(11, 40, 56, .12);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 22px rgba(11,40,56,.06);
+    }
+    .pillar {
+      position: relative;
+      width: 20%;
+      min-height: 318px;
+      padding: 34px 28px 32px;
+      border-right: 1px solid rgba(11, 40, 56, .12);
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .pillars {
+        overflow: visible;
+      }
+
+      .pillar:hover {
+        z-index: 2;
+        transform: translateY(-5px);
+        background: #fbfdfd;
+        box-shadow:
+          0 12px 24px rgba(11, 40, 56, .10),
+          0 0 0 1px rgba(11, 40, 56, .16);
+      }
+    }
+    .pillar:last-child { border-right: 0; }
+    .pillar:after {
+      content: attr(data-letter);
+      position: absolute;
+      right: -5px;
+      bottom: -34px;
+      color: rgba(11,40,56,.035);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 150px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .pillar-letter {
+      width: 52px;
+      height: 52px;
+      display: inline-block;
+      margin-bottom: 42px;
+      border: 1px solid rgba(99,189,169,.55);
+      border-radius: 50%;
+      color: #0b2838;
+      background: #e8f5f1;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 50px;
+      text-align: center;
+    }
+    .pillar h3 { margin-bottom: 14px; color: #0b2838; font-size: 27px; }
+    .pillar p { margin-bottom: 0; color: #64717a; font-size: 15px; line-height: 1.7; }
+    .integrated-note {
+      width: 100%;
+      max-width: 900px;
+      margin: 48px 0 0;
+      padding: 26px 30px;
+      border-left: 3px solid #63bda9;
+      color: #4d5c65;
+      background: #f7fbfa;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 21px;
+      font-style: italic;
+      line-height: 1.65;
+      text-align: left;
+    }
+
+    /* Transparência */
+    .transparency {
+      color: #fff;
+      background: #0b2f42;
+      background: linear-gradient(135deg, #071f2c 0%, #0b2f42 58%, #103c51 100%);
+    }
+    .transparency .section-kicker { color: #9adbc9; }
+    .transparency h2 { color: #fff; }
+    .not-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .not-card {
+      width: 100%;
+      margin: 0;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+    }
+    .x-icon {
+      float: left;
+      width: 42px;
+      height: 42px;
+      margin-right: 18px;
+      border-radius: 50%;
+      color: #b9efe2;
+      border: 1px solid rgba(99,189,169,.35);
+      background: rgba(99,189,169,.10);
+      font-size: 21px;
+      line-height: 40px;
+      text-align: center;
+    }
+    .not-card p { margin: 3px 0 0 60px; color: rgba(255,255,255,.86); font-size: 16px; line-height: 1.7; }
+
+    /* Técnica */
+    .technique-grid { display: flex; align-items: stretch; gap: 64px; }
+    .tech-visual {
+      width: 42%;
+      margin-right: 0;
+    }
+
+    .tech-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .tech-content {
+      width: calc(58% - 64px);
+      padding: 24px 0;
+      align-self: center;
+    }
+    .tech-content h2 { margin-bottom: 26px; }
+    .tech-content h3 { margin: 0 0 22px; color: #0b2838; font-size: 30px; }
+
+    .tech-accordion {
+      width: 100%;
+      border-top: 1px solid rgba(11, 40, 56, .12);
+    }
+
+    .tech-accordion-item {
+      border-bottom: 1px solid rgba(11, 40, 56, .12);
+    }
+
+    .tech-accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 19px 2px;
+      border: 0;
+      background: transparent;
+      color: #52616a;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.5;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .tech-accordion-trigger:hover {
+      color: #0b2838;
+    }
+
+    .tech-accordion-arrow {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      color: #0b2838;
+      transition: transform .22s ease;
+    }
+
+    .tech-accordion-trigger[aria-expanded="true"] .tech-accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .tech-accordion-panel {
+      padding: 0 42px 20px 2px;
+    }
+
+    .tech-accordion-panel p {
+      margin: 0;
+      color: #6a767d;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .tech-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(11, 40, 56, .12); }
+    .tech-list li {
+      position: relative;
+      padding: 18px 0 18px 28px;
+      border-bottom: 1px solid rgba(11, 40, 56, .12);
+      color: #52616a;
+      font-size: 16px;
+    }
+    .tech-list li:before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 27px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #63bda9;
+    }
+
+    /* Episódios - galeria de vídeos */
+    .episodes { background: #f6f9f9; }
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .episode-card {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(11, 40, 56, .12);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 6px 22px rgba(11,40,56,.06);
+      transition: transform .2s ease;
+    }
+    .episode-card:hover { transform: translateY(-3px); }
+    .episode-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .episode-info {
+      padding: 22px 22px 26px;
+    }
+    .episode-label {
+      color: #63bda9;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .17em;
+    }
+    .episode-card h4 {
+      margin: 12px 0 0;
+      color: #0b2838;
+      font-size: 19px;
+      line-height: 1.32;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: calc(3 * 1.32em);
+      max-height: calc(3 * 1.32em);
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(0,0,0,.75);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .video-modal.open { display: flex; }
+    .video-modal-content {
+      width: min(960px, 100%);
+      position: relative;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        -10px -6px 30px rgba(99, 189, 169, .24),
+        12px 10px 58px rgba(45, 196, 208, .16);
+    }
+
+    .video-modal iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+    .video-close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      background: #fff;
+      color: #0b2838;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* Responsivo */
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .desktop-nav a { margin-left: 20px; font-size: 11px; }
+      .pillar { width: 50%; border-bottom: 1px solid rgba(11, 40, 56, .12); }
+      .pillar:nth-child(2n) { border-right: 0; }
+      .pillar:last-child { width: 100%; border-bottom: 0; }
+      .technique-grid { display: block; }
+      .tech-visual { width: 100%; margin: 0 0 44px; }
+      .tech-content { width: 100%; padding: 0; }
+    }
+
+    @media (max-width: 900px) {
+      .desktop-nav, .header-contact { display: none; }
+      .menu-btn { display: flex; }
+      .nav-shell { height: 76px; }
+      .logo img { height: 56px; }
+      .hero { min-height: 0; padding: 145px 0 90px; }
+      .not-grid { grid-template-columns: 1fr; gap: 18px; }
+      .episode-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .episode-card { width: 100%; min-height: 0; }
+      .episode-card h4 { margin-top: 14px; }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        background-position: right center;
+      }
+
+      .episode-card h4 {
+        font-size: 16px;
+        line-height: 1.3;
+        min-height: calc(3 * 1.3em);
+        max-height: calc(3 * 1.3em);
+      }
+
+      .container { width: 100%; padding-left: 24px; padding-right: 24px; }
+      .section { padding: 88px 0; }
+      .hero { padding: 126px 0 72px; }
+      .hero:after { right: -15px; bottom: -20px; font-size: 135px; }
+      .hero h1 { font-size: 50px; }
+      .hero-quote { font-size: 17px; line-height: 1.65; }
+      .section-header { margin-bottom: 46px; }
+      .section h2 { font-size: 42px; }
+      .pillar { width: 100%; min-height: 0; border-right: 0; padding: 28px 24px; }
+      .pillar-letter { margin-bottom: 26px; }
+      .integrated-note { max-width: none; margin-top: 34px; font-size: 18px; padding: 22px 20px; }
+      .not-card { padding: 22px; }
+      .x-icon { width: 38px; height: 38px; line-height: 36px; }
+      .not-card p { margin-left: 54px; font-size: 15px; }
+
+      .tech-monogram { font-size: 82px; margin-top: -50px; }
+      .episode-grid { gap: 14px; }
+      .episode-info { padding: 16px 14px 20px; }
+      .episode-card h4 { font-size: 19px; line-height: 1.3; }
+      .episode-label { font-size: 10px; letter-spacing: .12em; }
+    }
+  
+
+    /* =========================================================
+       GRADE GLOBAL ; MESMA LARGURA DO INDEX DEMANGE
+       Desktop: container máximo 1280px + 32px de respiro lateral.
+       Mobile/tablet: 24px de respiro lateral.
+       Todas as seções partem da mesma reta do logotipo.
+       ========================================================= */
+    .hero > .container,
+    #pilares > .container,
+    #transparencia > .container,
+    #subvasto > .container,
+    #episodios > .container,
+    footer > .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero > .container,
+      #pilares > .container,
+      #transparencia > .container,
+      #subvasto > .container,
+      #episodios > .container,
+      footer > .container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+
+    /* =========================================================
+       SHELL DO INDEX DEMANGE: HEADER / MENU / FOOTER
+       Mantém o conteúdo visual do P.R.I.M.E. MD independente.
+       ========================================================= */
+    :root {
+      --primary-color: #0b2838;
+      --accent-color: #63bda9;
+      --brushed-steel: #4a4a4a;
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+
+    .mobile-menu.open {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(11, 40, 56, 0.4); }
+      50% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(11, 40, 56, 0); }
+    }
+
+    .animate-gentle-pulse {
+      animation: gentlePulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes gentlePulseGreen {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); }
+      50% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(74, 222, 128, 0); }
+    }
+
+    .animate-gentle-pulse-green {
+      animation: gentlePulseGreen 2.5s ease-in-out infinite;
+    }
+
+    /* Evita que a classe .container própria do PRIME mude a largura
+       do container do rodapé trazido do index. */
+    footer .container {
+      width: 100%;
+      max-width: 1280px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      footer .container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-gentle-pulse,
+      .animate-gentle-pulse-green {
+        animation: none;
+      }
+
+      .pillar {
+        transition: none;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-500">
+      <div class="w-full max-w-[1280px] mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="https://www.demange.com.br/#inicio" class="logo-link">
+              <img src="https://www.demange.com.br/src/logo-png.png" alt="Dr. Marco Demange" class="h-16 w-auto" decoding="async">
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-x-3 xl:gap-x-5 whitespace-nowrap">
+            <a href="https://www.demange.com.br/#inicio" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Início
+            </a>
+            <a href="https://www.demange.com.br/#sobre" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Sobre
+            </a>
+            <a href="https://www.demange.com.br/#midia" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Na Mídia
+            </a>
+            <a href="https://www.demange.com.br/#cirurgia-joelho" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Cirurgia de Joelho
+            </a>
+            <a href="https://demange.com.br/prime-md" target="_self" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              P.R.I.M.E. MD
+            </a>
+            <a href="https://www.demange.com.br/#tecnologia" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Tecnologia
+            </a>
+            <a href="https://www.demange.com.br/#conteudos" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Conteúdos
+            </a>
+            <a href="https://www.demange.com.br/#locais" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              Local
+            </a>
+          </nav>
+
+          <!-- CTA Button Desktop -->
+          <div class="hidden lg:block">
+            <a href="https://www.demange.com.br/#contato" class="text-white px-8 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105" style="background-color: var(--primary-color);">
+              Contato
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors duration-300" type="button" aria-label="Abrir ou fechar menu" aria-controls="mobile-menu" aria-expanded="false">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu lg:hidden border-t border-gray-100" inert>
+          <nav class="py-8 space-y-2">
+            <a href="https://www.demange.com.br/#inicio" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Início
+            </a>
+            <a href="https://www.demange.com.br/#sobre" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Sobre
+            </a>
+            <a href="https://www.demange.com.br/#midia" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Na Mídia
+            </a>
+            <a href="https://www.demange.com.br/#cirurgia-joelho" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Cirurgia de Joelho
+            </a>
+            <a href="https://demange.com.br/prime-md" target="_self" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              P.R.I.M.E. MD
+            </a>
+            <a href="https://www.demange.com.br/#tecnologia" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Tecnologia
+            </a>
+            <a href="https://www.demange.com.br/#conteudos" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Conteúdos
+            </a>
+            <a href="https://www.demange.com.br/#locais" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              Local
+            </a>
+            <a href="https://www.demange.com.br/#contato" class="block w-full text-left py-4 px-2 mt-6 text-white font-light text-sm uppercase tracking-wider transition-all duration-300" style="background-color: var(--primary-color);">
+              Contato
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+  <main>
+    <section class="hero" id="prime-md">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><strong>Programa · Série em vídeo</strong></span>
+          <h1>P.R.I.M.E.&nbsp;MD</h1>
+          <p class="hero-quote">"O P.R.I.M.E. MD é um programa assistencial que integra protocolos baseados em evidências ao longo da jornada perioperatória. Nenhum dos componentes é original; todos estão publicados. O que é próprio é a forma de organizá-los, individualizá-los e medi-los."</p>
+        </div>
+</div>
+    </section>
+
+    <section class="section" id="pilares">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-kicker"><strong>Estrutura conceitual</strong></span>
+          <h2>Os cinco pilares</h2>
+          <div class="section-rule"></div>
+        </header>
+
+        <div class="pillars">
+          <article class="pillar" data-letter="P">
+            <span class="pillar-letter">P</span>
+            <h3>Precisão</h3>
+            <p>Planejar, executar e documentar de forma reprodutível.</p>
+          </article>
+          <article class="pillar" data-letter="R">
+            <span class="pillar-letter">R</span>
+            <h3>Recuperação</h3>
+            <p>Menos estresse perioperatório; retorno funcional seguro.</p>
+          </article>
+          <article class="pillar" data-letter="I">
+            <span class="pillar-letter">I</span>
+            <h3>Individualização</h3>
+            <p>Decisões ajustadas à anatomia, ao risco e à expectativa.</p>
+          </article>
+          <article class="pillar" data-letter="M">
+            <span class="pillar-letter">M</span>
+            <h3>Mobilidade</h3>
+            <p>Preservar e recuperar mobilidade, força e função.</p>
+          </article>
+          <article class="pillar" data-letter="E">
+            <span class="pillar-letter">E</span>
+            <h3>Estabilidade</h3>
+            <p>Equilíbrio ligamentar em todo o arco de movimento.</p>
+          </article>
+        </div>
+
+        <p class="integrated-note">"Nenhum pilar isolado determina o resultado; a proposta está na integração."</p>
+      </div>
+    </section>
+
+    <section class="section transparency" id="transparencia">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-kicker"><strong>Transparência científica</strong></span>
+          <h2>O que o programa não é</h2>
+          <div class="section-rule"></div>
+        </header>
+
+        <div class="not-grid">
+          <article class="not-card">
+            <div class="x-icon"><strong>✕</strong></div>
+            <p>Não é uma técnica cirúrgica nova.</p>
+          </article>
+          <article class="not-card">
+            <div class="x-icon"><strong>✕</strong></div>
+            <p>Não é uma marca de implante nem de sistema robótico.</p>
+          </article>
+          <article class="not-card">
+            <div class="x-icon"><strong>✕</strong></div>
+            <p>Não substitui o julgamento clínico.</p>
+          </article>
+          <article class="not-card">
+            <div class="x-icon"><strong>✕</strong></div>
+            <p>Ainda não possui superioridade clínica demonstrada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="subvasto">
+      <div class="container technique-grid">
+        <div class="tech-visual">
+          <img
+            src="src/demangeia.png"
+            alt="Dr. Marco Demange"
+            class="tech-image"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div class="tech-content">
+          <span class="section-kicker"><strong>Dentro do programa</strong></span>
+          <h2>Técnica M.D. Subvasto</h2>
+          <h3>Médio Diagonal Subvasto</h3>
+          <div class="tech-accordion">
+          <div class="tech-accordion-item">
+            <button
+              class="tech-accordion-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="tech-panel-1"
+            >
+              <span>O que é a técnica, em 1–2 frases</span>
+              <svg class="tech-accordion-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div class="tech-accordion-panel" id="tech-panel-1" hidden>
+              <p>Em breve adicionaremos esse conteúdo, ele esta sendo analisado pelo Dr. Demange aguarde um momento e volte em breve</p>
+            </div>
+          </div>
+          <div class="tech-accordion-item">
+            <button
+              class="tech-accordion-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="tech-panel-2"
+            >
+              <span>Em que contexto/indicação é usada</span>
+              <svg class="tech-accordion-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div class="tech-accordion-panel" id="tech-panel-2" hidden>
+              <p>Em breve adicionaremos esse conteúdo, ele esta sendo analisado pelo Dr. Demange aguarde um momento e volte em breve</p>
+            </div>
+          </div>
+          <div class="tech-accordion-item">
+            <button
+              class="tech-accordion-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="tech-panel-3"
+            >
+              <span>Diferencial em relação ao acesso padrão</span>
+              <svg class="tech-accordion-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div class="tech-accordion-panel" id="tech-panel-3" hidden>
+              <p>Em breve adicionaremos esse conteúdo, ele esta sendo analisado pelo Dr. Demange aguarde um momento e volte em breve</p>
+            </div>
+          </div>
+          <div class="tech-accordion-item">
+            <button
+              class="tech-accordion-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="tech-panel-4"
+            >
+              <span>Imagem ou vídeo ilustrativo, se houver</span>
+              <svg class="tech-accordion-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+            <div class="tech-accordion-panel" id="tech-panel-4" hidden>
+              <p>Em breve adicionaremos esse conteúdo, ele esta sendo analisado pelo Dr. Demange aguarde um momento e volte em breve</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section episodes" id="episodios">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-kicker"><strong>Série P.R.I.M.E. MD</strong></span>
+          <h2>Próximos episódios</h2>
+          <div class="section-rule"></div>
+        </header>
+
+        <div class="episode-grid">
+
+          <article class="episode-card" data-video="https://www.youtube.com/embed/_VXx-WBX3K4?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/_VXx-WBX3K4/hqdefault.jpg" alt="Capa do vídeo 12: Cirurgia de Prótese de Joelho Assistida por Robótica | Aula 1 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 1</span>
+              <h4 title="Cirurgia de Prótese de Joelho Assistida por Robótica | Aula 1 – Dr. Marco Demange">Cirurgia de Prótese de Joelho Assistida por Robótica | Aula 1 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/nYpBpKgQX-k?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/nYpBpKgQX-k/hqdefault.jpg" alt="Capa do vídeo 11: A robótica é mais precisa. Mas o paciente fica melhor? | Aula 2 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 2</span>
+              <h4 title="A robótica é mais precisa. Mas o paciente fica melhor? | Aula 2 – Dr. Marco Demange">A robótica é mais precisa. Mas o paciente fica melhor? | Aula 2 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/eqxX23tZynw?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/eqxX23tZynw/hqdefault.jpg" alt="Capa do vídeo 10: Cirurgia robótica do joelho: o que realmente muda para o paciente? | Aula 3 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 3</span>
+              <h4 title="Cirurgia robótica do joelho: o que realmente muda para o paciente? | Aula 3 – Dr. Marco Demange">Cirurgia robótica do joelho: o que realmente muda para o paciente? | Aula 3 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/euVWV7YDTqw?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/euVWV7YDTqw/hqdefault.jpg" alt="Capa do vídeo 9: P.R.I.M.E. MD: por que sistematizar a artroplastia do joelho? | Aula 4 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 4</span>
+              <h4 title="P.R.I.M.E. MD: por que sistematizar a artroplastia do joelho? | Aula 4 – Dr. Marco Demange">P.R.I.M.E. MD: por que sistematizar a artroplastia do joelho? | Aula 4 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/-YJadbumOJs?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/-YJadbumOJs/hqdefault.jpg" alt="Capa do vídeo 8: ERAS na artroplastia: o que realmente acelera a recuperação? | Aula 5 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 5</span>
+              <h4 title="ERAS na artroplastia: o que realmente acelera a recuperação? | Aula 5 – Dr. Marco Demange">ERAS na artroplastia: o que realmente acelera a recuperação? | Aula 5 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/ASkpEo6jB0g?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/ASkpEo6jB0g/hqdefault.jpg" alt="Capa do vídeo 7: Alinhamento na ATJ: mecânico, cinemático ou funcional? | Aula 6 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 6</span>
+              <h4 title="Alinhamento na ATJ: mecânico, cinemático ou funcional? | Aula 6 – Dr. Marco Demange">Alinhamento na ATJ: mecânico, cinemático ou funcional? | Aula 6 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/hlYFliXzOFw?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/hlYFliXzOFw/hqdefault.jpg" alt="Capa do vídeo 6: Individualizar a ATJ: muito além do alinhamento e do implante | Aula 7 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 7</span>
+              <h4 title="Individualizar a ATJ: muito além do alinhamento e do implante | Aula 7 – Dr. Marco Demange">Individualizar a ATJ: muito além do alinhamento e do implante | Aula 7 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/riK13rZpM8M?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/riK13rZpM8M/hqdefault.jpg" alt="Capa do vídeo 5: Por que uma ATJ tecnicamente perfeita pode produzir um paciente insatisfeito? | Aula 8 – Dr. Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 8</span>
+              <h4 title="Por que uma ATJ tecnicamente perfeita pode produzir um paciente insatisfeito? | Aula 8 – Dr. Demange">Por que uma ATJ tecnicamente perfeita pode produzir um paciente insatisfeito? | Aula 8 – Dr. Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/yExi1DldF1s?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/yExi1DldF1s/hqdefault.jpg" alt="Capa do vídeo 4: ATJ minimamente invasiva: ciência, semântica ou marketing? | Aula 9 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 9</span>
+              <h4 title="ATJ minimamente invasiva: ciência, semântica ou marketing? | Aula 9 – Dr. Marco Demange">ATJ minimamente invasiva: ciência, semântica ou marketing? | Aula 9 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/-xO_KUVBHqQ?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/-xO_KUVBHqQ/hqdefault.jpg" alt="Capa do vídeo 3: Quando eu não indico cirurgia no joelho | Aula 10 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 10</span>
+              <h4 title="Quando eu não indico cirurgia no joelho | Aula 10 – Dr. Marco Demange">Quando eu não indico cirurgia no joelho | Aula 10 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+          <article class="episode-card" data-video="https://www.youtube.com/embed/BQuuDXaS7IA?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/BQuuDXaS7IA/hqdefault.jpg" alt="Capa do vídeo 2: Quando poderei dirigir, trabalhar, viajar e fazer exercícios? | Aula 11 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 11</span>
+              <h4 title="Quando poderei dirigir, trabalhar, viajar e fazer exercícios? | Aula 11 – Dr. Marco Demange">Quando poderei dirigir, trabalhar, viajar e fazer exercícios? | Aula 11 – Dr. Marco Demange</h4>
+            </div>
+          </article>          <article class="episode-card" data-video="https://www.youtube.com/embed/apz4RT4B32s?autoplay=1&rel=0&modestbranding=1&enablejsapi=1">
+            <img class="episode-cover" src="https://i.ytimg.com/vi/apz4RT4B32s/hqdefault.jpg" alt="Capa do vídeo 1: Prótese parcial ou total do joelho: qual é a diferença? | Aula 12 – Dr. Marco Demange" loading="lazy" decoding="async">
+            <div class="episode-info">
+              <span class="episode-label">VÍDEO 12</span>
+              <h4 title="Prótese parcial ou total do joelho: qual é a diferença? | Aula 12 – Dr. Marco Demange">Prótese parcial ou total do joelho: qual é a diferença? | Aula 12 – Dr. Marco Demange</h4>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-white py-24" style="background-color: #131313;">
+        <div class="container mx-auto px-6 lg:px-8">
+          <div class="text-center">
+            <div class="mb-16">
+              <h3 class="text-3xl font-light mb-8 tracking-wide">Dr. Marco Demange</h3>
+              <p class="text-gray-400 max-w-md mx-auto font-light leading-relaxed text-lg">
+                Especialista em cirurgia do joelho, cirurgia robótica e preservação articular
+              </p>
+            </div>
+  
+            <div class="flex justify-center space-x-8 mb-16">
+              <a href="https://api.whatsapp.com/send/?phone=5511950555000&text=Ol%C3%A1%21+Vim+pelo+site+e+gostaria+de+agendar+uma+consulta+com+o+Dr.+Marco+Demange.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Entrar em contato via WhatsApp">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Instagram do Dr. Marco Demange">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Facebook do Dr. Marco Demange">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@DrMarcoDemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="TikTok do Dr. Marco Demange">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.849-1.531-1.955-1.531-3.338h-3.97v13.538a3.46 3.46 0 11-3.008-3.436c.142 0 .284.009.424.024V7.172a7.35 7.35 0 00-.424-.024A7.406 7.406 0 002.827 14.554a7.406 7.406 0 007.406 7.406 7.406 7.406 0 007.406-7.406V9.242a10.84 10.84 0 006.361 2.07v-3.97a6.239 6.239 0 01-4.679-1.78z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@DrMarcoDemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="YouTube do Dr. Marco Demange">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/marcodemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="LinkedIn do Dr. Marco Demange">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+  
+  <div class="border-t border-gray-800 pt-10 text-center">
+  
+    <p class="text-sm text-gray-400 font-light">
+      © 2026 Dr. Marco Demange. Todos os direitos reservados.
+    </p>
+  
+    <p class="text-xs text-white font-light tracking-wide mt-24">
+      Desenvolvido por:
+      <a
+        href="https://www.mindfly.com.br/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium text-white hover:opacity-70 transition-opacity duration-300"
+      >
+        MindFly Digital
+      </a>
+    </p>
+  
+  </div>
+          </div>
+        </div>
+  
+      </footer>
+  
+      <!-- Instagram Button -->
+      <a href="https://www.instagram.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="fixed bottom-24 right-6 z-50 bg-[#0B2838] hover:bg-[#0e3956] text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-gentle-pulse" aria-label="Instagram do Dr. Marco Demange">
+        <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke-linecap="round" stroke-linejoin="round"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round" stroke-linejoin="round"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-linejoin="round"></line>
+        </svg>
+      </a>
+  
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/5511950555000?text=Olá! Gostaria de agendar uma consulta com o Dr. Marco Demange." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-gentle-pulse-green" aria-label="Entrar em contato via WhatsApp" rel="noopener">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+      </a>
+  
+      <!-- Back to Top Button -->
+      <button id="back-to-top" class="fixed bottom-6 left-6 z-50 bg-gray-800 hover:bg-gray-900 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none" aria-label="Voltar ao topo" style="transition: opacity 0.3s ease, transform 0.3s ease;" type="button" tabindex="-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+      </button>
+
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-content">
+      <button class="video-close" id="videoClose" type="button" aria-label="Fechar vídeo">×</button>
+      <iframe id="videoFrame" src="" title="Vídeo do episódio" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  
+  <script>
+    (function () {
+      const menuButton = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const backToTop = document.getElementById('back-to-top');
+      const header = document.getElementById('header');
+      const desktop = window.matchMedia('(min-width: 1024px)');
+
+      function setMenu(open, restoreFocus) {
+        if (!menu || !menuButton) return;
+        menu.classList.toggle('open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+
+        if ('inert' in menu) {
+          menu.inert = !open;
+        } else {
+          if (open) menu.removeAttribute('inert');
+          else menu.setAttribute('inert', '');
+        }
+
+        if (restoreFocus) {
+          try { menuButton.focus({ preventScroll: true }); }
+          catch (e) { menuButton.focus(); }
+        }
+      }
+
+      if (menuButton && menu) {
+        setMenu(false, false);
+
+        menuButton.addEventListener('click', function () {
+          setMenu(!menu.classList.contains('open'), false);
+        });
+
+        menu.addEventListener('click', function (event) {
+          if (event.target.closest('a')) setMenu(false, false);
+        });
+
+        function onDesktop(event) {
+          if (event.matches) setMenu(false, false);
+        }
+
+        if (desktop.addEventListener) desktop.addEventListener('change', onDesktop);
+        else if (desktop.addListener) desktop.addListener(onDesktop);
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && menu.classList.contains('open')) {
+            setMenu(false, true);
+          }
+        });
+      }
+
+      function updateScroll() {
+        if (header) header.classList.toggle('shadow-sm', window.scrollY > 50);
+
+        if (backToTop) {
+          const available = document.documentElement.scrollHeight - window.innerHeight;
+          const visible = available > 0 && (window.scrollY / available) > 0.4;
+          backToTop.style.opacity = visible ? '1' : '0';
+          backToTop.style.pointerEvents = visible ? 'auto' : 'none';
+          backToTop.tabIndex = visible ? 0 : -1;
+        }
+      }
+
+      window.addEventListener('scroll', updateScroll, { passive: true });
+      window.addEventListener('resize', updateScroll, { passive: true });
+      window.addEventListener('pageshow', updateScroll);
+
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+        });
+      }
+
+      updateScroll();
+    }());
+  </script>
+
+
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.episode-card');
+      var modal = document.getElementById('videoModal');
+      var frame = document.getElementById('videoFrame');
+      var close = document.getElementById('videoClose');
+
+      function closeVideo() {
+        modal.className = 'video-modal';
+        frame.src = '';
+      }
+
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].onclick = function () {
+          frame.src = this.getAttribute('data-video');
+          modal.className = 'video-modal open';
+        };
+      }
+
+      close.onclick = closeVideo;
+      modal.onclick = function (event) {
+        if (event.target === modal) closeVideo();
+      };
+    }());
+  </script>
+
+
+  <script>
+    (function () {
+      var triggers = document.querySelectorAll('.tech-accordion-trigger');
+
+      for (var i = 0; i < triggers.length; i++) {
+        triggers[i].addEventListener('click', function () {
+          var isOpen = this.getAttribute('aria-expanded') === 'true';
+          var panelId = this.getAttribute('aria-controls');
+          var panel = document.getElementById(panelId);
+
+          if (!isOpen) {
+            for (var j = 0; j < triggers.length; j++) {
+              if (triggers[j] === this) continue;
+
+              triggers[j].setAttribute('aria-expanded', 'false');
+
+              var otherPanelId = triggers[j].getAttribute('aria-controls');
+              var otherPanel = document.getElementById(otherPanelId);
+
+              if (otherPanel) {
+                otherPanel.hidden = true;
+              }
+            }
+          }
+
+          this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+
+          if (panel) {
+            panel.hidden = isOpen;
+          }
+        });
+      }
+    }());
+  </script>
+
+</body>
+</html>
