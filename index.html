@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <meta charset="UTF-8" />
+
+<!--
+  DEMANGE | INDEX UNICO | Refatoracao conservadora - 2026-09-17
+  Manutencao: editar somente o bloco solicitado; manter textos e pontuacao.
+  SEO/Schema/Analytics/Kommo: valores originais preservados.
+  Os cards originais ficam no HTML; nunca adicionar copias manuais para o loop.
+  CSS do projeto e classes originais preservados. Tailwind CDN mantido.
+  Dependencias existentes: imagens (inclusive src/), Google Fonts, Tailwind,
+  Google Analytics e formulario Kommo. Nao apagar esses arquivos no servidor.
+  Estrutura: HEAD > HEADER > HERO > SOBRE > MIDIA > TRATAMENTOS > TECNOLOGIA
+             > CONTEUDOS > CLINICA > CONTATO > FOOTER > MODAIS > JAVASCRIPT.
+-->
 
 <script type="application/ld+json">
 {
@@ -39,14 +52,12 @@
   },
   "sameAs": [
     "https://www.instagram.com/drmarcodemange/",
-    "https://www.youtube.com/@dr.marcodemange",
+    "https://www.youtube.com/@DrMarcoDemange/",
     "https://www.linkedin.com/in/marcodemange"
   ]
 }
 </script>
 
-
-    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R5E2R83MN"></script>
     <script>
@@ -56,7 +67,6 @@
 
       gtag('config', 'G-3R5E2R83MN');
     </script>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Meta Tags -->
@@ -88,6 +98,11 @@
     <meta name="twitter:title" content="Dr. Marco Demange - Especialista em Cirurgia do Joelho" />
     <meta name="twitter:description" content="Professor Livre-Docente FMUSP, especialista em cirurgia do joelho. Prótese robótica, artroscopia e reconstrução ligamentar em São Paulo." />
     <meta name="twitter:image" content="https://www.demange.com.br/src/seo_imgs-06.png" />
+    <!-- RECURSOS ORIGINAIS: apenas antecipacao de conexoes/carregamento. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="https://www.demange.com.br/src/imagem-home.jpg" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://www.demange.com.br/src/BANNER-MOB.png" media="(max-width: 767px)" fetchpriority="high" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -240,40 +255,76 @@
         letter-spacing: 1px;
       }
     </style>
+
+    <!-- CORRECOES FUNCIONAIS: nao redefinem cores, fontes ou dimensoes. -->
+    <style id="site-functional-fixes">
+      /* Conteudo legivel mesmo sem JavaScript; animacao ativada ao inicializar. */
+      .fade-in-section { opacity: 1; transform: none; }
+      .js-reveal .fade-in-section:not(.is-visible) {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      section[id] { scroll-margin-top: 80px; }
+      #carousel-track, #media-carousel-track {
+        touch-action: pan-y pinch-zoom;
+        user-select: none;
+      }
+      .tech-card:focus-within .tech-overlay { opacity: 1; }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+      }
+      [data-modal-title]:focus { outline: none; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .animate-fade-in, .animate-fade-in-up,
+        .animate-gentle-pulse, .animate-gentle-pulse-green {
+          animation: none;
+        }
+        .fade-in-section, .js-reveal .fade-in-section:not(.is-visible) {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body class="bg-white text-gray-900">
-    <!-- Header -->
+    <!-- ==================== HEADER / NAVEGACAO ==================== -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-500">
       <div class="w-full max-w-[1280px] mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
           <!-- Logo -->
           <div class="flex items-center">
             <a href="#inicio" class="logo-link">
-              <img src="https://www.demange.com.br/src/logo-png.png" alt="Dr. Marco Demange" class="h-16 w-auto">
+              <img src="https://www.demange.com.br/src/logo-png.png" alt="Dr. Marco Demange" class="h-16 w-auto" decoding="async">
             </a>
           </div>
 
           <!-- Desktop Navigation -->
-          <nav class="hidden lg:flex items-center space-x-10">
-            <a href="#inicio" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+          <nav class="hidden lg:flex items-center gap-x-3 xl:gap-x-5 whitespace-nowrap">
+            <a href="#inicio" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Início
             </a>
-            <a href="#sobre" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="#sobre" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Sobre
             </a>
-            <a href="#midia" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="#midia" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Na Mídia
             </a>
-            <a href="#cirurgia-joelho" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="#cirurgia-joelho" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Cirurgia de Joelho
             </a>
-            <a href="#tecnologia" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="https://demange.com.br/prime-md" target="_self" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
+              P.R.I.M.E. MD
+            </a>
+            <a href="#tecnologia" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Tecnologia
             </a>
-            <a href="#conteudos" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="#conteudos" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Conteúdos
             </a>
-            <a href="#locais" class="text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105">
+            <a href="#locais" class="text-gray-700 hover:text-gray-900 font-light text-xs xl:text-[13px] uppercase tracking-wide transition-all duration-300 hover:scale-105">
               Local
             </a>
           </nav>
@@ -286,7 +337,7 @@
           </div>
 
           <!-- Mobile Menu Button -->
-          <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors duration-300">
+          <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors duration-300" type="button" aria-label="Abrir ou fechar menu" aria-controls="mobile-menu" aria-expanded="false">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
@@ -294,7 +345,7 @@
         </div>
 
         <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="mobile-menu lg:hidden border-t border-gray-100">
+        <div id="mobile-menu" class="mobile-menu lg:hidden border-t border-gray-100" inert>
           <nav class="py-8 space-y-2">
             <a href="#inicio" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
               Início
@@ -307,6 +358,9 @@
             </a>
             <a href="#cirurgia-joelho" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
               Cirurgia de Joelho
+            </a>
+            <a href="https://demange.com.br/prime-md" target="_self" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
+              P.R.I.M.E. MD
             </a>
             <a href="#tecnologia" class="block w-full text-left py-4 px-2 text-gray-700 hover:text-gray-900 font-light text-sm uppercase tracking-wider transition-all duration-300">
               Tecnologia
@@ -325,7 +379,7 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ==================== HERO / INICIO ==================== -->
     <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden py-10 md:py-0">
       <!-- Background Image Desktop -->
       <div class="absolute inset-0 bg-cover bg-no-repeat hidden md:block" style="background-image: url('https://www.demange.com.br/src/imagem-home.jpg'); background-position: center 20%; margin-top: 50px;">
@@ -354,14 +408,12 @@
                   <span class="font-medium">Procedimentos nos principais hospitais:</span> Vila Nova Star, Hospital Albert Einstein, São Luiz Itaim, Sírio-Libanês e Moriah.
                 </p>
               </div>
-            <div class="flex items-center space-x-6">
-              <a href="#contato" class="inline-block bg-white hover:bg-gray-100 text-gray-900 px-10 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
+              <a href="#contato" class="inline-block bg-white hover:bg-gray-100 text-gray-900 px-10 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105 text-center whitespace-nowrap">
                 Agendar Consulta
               </a>
-              <a href="https://www.youtube.com/watch?v=l5aKqDvpsLc" target="_blank" class="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-white hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105 group">
-                <svg class="w-8 h-8" style="transform: translateX(-1px);" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
+              <a href="https://demange.com.br/prime-md" target="_self" class="inline-block border-2 border-white hover:bg-white hover:text-gray-900 text-white px-10 py-[14px] text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105 text-center whitespace-nowrap">
+                PROGRAMA P.R.I.M.E. MD
               </a>
             </div>
           </div>
@@ -369,7 +421,7 @@
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ==================== SOBRE O DR. DEMANGE ==================== -->
     <section id="sobre" class="py-40 bg-white fade-in-section">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
@@ -393,10 +445,10 @@
               
               <!-- Buttons -->
               <div class="flex items-center gap-4">
-                <button onclick="document.getElementById('formacao-modal').style.display='flex'" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-8 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105">
+                <button data-modal-open="formacao-modal" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-8 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105" type="button">
                   Formação Acadêmica
                 </button>
-                <button onclick="document.getElementById('artigos-modal').style.display='flex'" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-8 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105">
+                <button data-modal-open="artigos-modal" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-8 py-4 text-sm font-light uppercase tracking-wider transition-all duration-300 transform hover:scale-105" type="button">
                   Artigos Científicos
                 </button>
               </div>
@@ -410,7 +462,7 @@
     alt="Dr. Marco Demange"
     class="!w-[470px] !h-[780px] rounded-lg shadow-lg object-cover"
     style="width: 460px !important; height: 780px !important;"
-  >
+   decoding="async" loading="lazy">
 </div>
             </div>
           </div>
@@ -434,16 +486,16 @@
             <!-- Image Mobile -->
             <div class="flex justify-center mb-8">
           <div class="w-full max-w-sm">
-            <img src="https://www.demange.com.br/src/DSC02437.png" alt="Dr. Marco Demange" class="w-full h-[500px] rounded-lg shadow-lg object-cover">
+            <img src="https://www.demange.com.br/src/DSC02437.png" alt="Dr. Marco Demange" class="w-full h-[500px] rounded-lg shadow-lg object-cover" decoding="async" loading="lazy">
           </div>
             </div>
             
             <!-- Buttons -->
             <div class="flex items-center justify-center gap-4">
-              <button onclick="document.getElementById('formacao-modal').style.display='flex'" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300">
+              <button data-modal-open="formacao-modal" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300" type="button">
                 Formação Acadêmica
               </button>
-              <button onclick="document.getElementById('artigos-modal').style.display='flex'" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300">
+              <button data-modal-open="artigos-modal" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-6 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300" type="button">
                 Artigos Científicos
               </button>
             </div>
@@ -452,7 +504,7 @@
       </div>
     </section>
 
-<!-- Dr. Demange na Mídia Section -->
+<!-- ==================== NA MIDIA ==================== -->
 <section id="midia" class="py-24 md:py-32 bg-white fade-in-section">
   <div class="container mx-auto px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
@@ -470,12 +522,12 @@
       <!-- Carousel Container -->
       <div class="relative">
         <!-- Desktop Navigation Arrows -->
-        <button id="media-prev-btn" class="hidden md:flex absolute -left-4 lg:-left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200">
+        <button id="media-prev-btn" class="hidden md:flex absolute -left-4 lg:-left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200" type="button" aria-label="Matéria anterior">
           <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button id="media-next-btn" class="hidden md:flex absolute -right-4 lg:-right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200">
+        <button id="media-next-btn" class="hidden md:flex absolute -right-4 lg:-right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200" type="button" aria-label="Próxima matéria">
           <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
@@ -485,10 +537,10 @@
         <div class="overflow-hidden">
           <div id="media-carousel-track" class="flex transition-transform duration-500 ease-out cursor-grab" style="gap: 1.5rem;">
 
-            <!-- Card G1A - Globo G1 Bem Estar -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+    <!-- MEDIA-CARDS-START: editar/adicionar os cards originais abaixo. -->
+    <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://www.demange.com.br/src/demange-bem-estar-globo.png" alt="Problemas nos joelhos - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://www.demange.com.br/src/demange-bem-estar-globo.png" alt="Problemas nos joelhos - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Globo - G1 Bem Estar
                 </div>
@@ -512,7 +564,7 @@
             <!-- Card G1B - Globo G1 Bem Estar -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://www.demange.com.br/src/demange-na-blobo.png" alt="Andar e correr descalço faz bem - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://www.demange.com.br/src/demange-na-blobo.png" alt="Andar e correr descalço faz bem - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Globo - G1 Bem Estar
                 </div>
@@ -536,7 +588,7 @@
             <!-- Card 0 - Estadão -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://www.estadao.com.br/resizer/v2/HRGXV6TNKNBHVBJ7BMDFNTMIRY.jpg?quality=80&auth=5e60b825ab1bd921ab1722ed5fc26a3fc55d42f4e2531ce83355a54e447881c0&width=1366&height=605&focal=1218,1507" alt="A nova era da cirurgia do joelho" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://www.estadao.com.br/resizer/v2/HRGXV6TNKNBHVBJ7BMDFNTMIRY.jpg?quality=80&auth=5e60b825ab1bd921ab1722ed5fc26a3fc55d42f4e2531ce83355a54e447881c0&width=1366&height=605&focal=1218,1507" alt="A nova era da cirurgia do joelho" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Estadão
                 </div>
@@ -560,7 +612,7 @@
             <!-- Card 1 - ND+ -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://static.ndmais.com.br/2023/10/lesao-neymar-800x533.jpg" alt="Lesão de ligamento cruzado anterior" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://static.ndmais.com.br/2023/10/lesao-neymar-800x533.jpg" alt="Lesão de ligamento cruzado anterior" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   ND+
                 </div>
@@ -584,7 +636,7 @@
             <!-- Card 2 - Saúde Digital News -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://saudedigitalnews.com.br/wp-content/uploads/2025/09/unnamed-2025-09-16T184105.885-1170x658.jpg" alt="Tecnologia robótica para cirurgia ortopédica" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://saudedigitalnews.com.br/wp-content/uploads/2025/09/unnamed-2025-09-16T184105.885-1170x658.jpg" alt="Tecnologia robótica para cirurgia ortopédica" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Saúde Digital News
                 </div>
@@ -608,7 +660,7 @@
             <!-- Card 3 - IstoÉ Saúde -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://istoesaude.com.br/wp-content/uploads/sites/34/2025/10/a-atividade-fisica-e-fundamental-para-a-prevencao-de-osteoporose.jpg" alt="Osteoporose" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://istoesaude.com.br/wp-content/uploads/sites/34/2025/10/a-atividade-fisica-e-fundamental-para-a-prevencao-de-osteoporose.jpg" alt="Osteoporose" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   IstoÉ Saúde
                 </div>
@@ -632,7 +684,7 @@
             <!-- Card 4 - Healthcare Grupo Mídia -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://wp-microport-gmps.s3.eu-central-1.amazonaws.com/2024/05/Image-Demange-MAY24.jpg" alt="Hospital Vila Nova Star" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://wp-microport-gmps.s3.eu-central-1.amazonaws.com/2024/05/Image-Demange-MAY24.jpg" alt="Hospital Vila Nova Star" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Healthcare – Grupo Mídia
                 </div>
@@ -656,7 +708,7 @@
             <!-- Card 5 - Terra (Beach tennis) -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://p2.trrsf.com/image/fget/cf/1548/0/images.terra.com/2025/12/10/62341735-beachtennis.jpg" alt="Beach tennis Terra" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://p2.trrsf.com/image/fget/cf/1548/0/images.terra.com/2025/12/10/62341735-beachtennis.jpg" alt="Beach tennis Terra" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Terra
                 </div>
@@ -680,7 +732,7 @@
             <!-- Card 6 - Catraca Livre (Beach tennis) -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://cdn.shopify.com/s/files/1/0805/0556/9577/files/Depositphotos_362216754_S_2048x2048.jpg" alt="Beach tennis em alta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://cdn.shopify.com/s/files/1/0805/0556/9577/files/Depositphotos_362216754_S_2048x2048.jpg" alt="Beach tennis em alta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Catraca Livre
                 </div>
@@ -704,7 +756,7 @@
             <!-- Card 7 - Carta Capital (Beach tennis) -->
             <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
               <div class="relative overflow-hidden">
-                <img src="https://www.cartacapital.com.br/wp-content/uploads/2025/12/pessoas-beach-tennis-1024x683-1024x683.jpg" alt="Beach tennis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="https://www.cartacapital.com.br/wp-content/uploads/2025/12/pessoas-beach-tennis-1024x683-1024x683.jpg" alt="Beach tennis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy">
                 <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                   Carta Capital
                 </div>
@@ -725,259 +777,18 @@
               </div>
             </div>
 
-            <!-- ✅ Duplicados para Infinite Loop (mesma ordem) -->
-
-            <!-- Card G1A Duplicate -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://www.demange.com.br/src/demange-bem-estar-globo.png" alt="Problemas nos joelhos - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Globo - G1 Bem Estar
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Tendão, cartilagem, menisco e ligamento: problemas nos joelhos
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  Bem Estar fala sobre as principais lesões do joelho e como os pés influenciam no impacto de cada pisada.
-                </p>
-                <a href="http://g1.globo.com/bemestar/noticia/tendao-cartilagem-menisco-ligamento-bem-estar-fala-sobre-problemas-nos-joelhos.ghtml" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card G1B Duplicate -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://www.demange.com.br/src/demange-na-blobo.png" alt="Andar e correr descalço faz bem - G1 Bem Estar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Globo - G1 Bem Estar
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Andar e correr descalço faz bem à saúde?
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  Revisão de estudos não comprova benefícios da corrida descalça; riscos são semelhantes aos da prática com tênis.
-                </p>
-                <a href="https://g1.globo.com/bemestar/noticia/andar-e-correr-descalco-faz-bem-a-saude-estudo-nao-encontra-riscos-nem-beneficios.ghtml" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 0 Duplicate - Estadão -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://www.estadao.com.br/resizer/v2/HRGXV6TNKNBHVBJ7BMDFNTMIRY.jpg?quality=80&auth=5e60b825ab1bd921ab1722ed5fc26a3fc55d42f4e2531ce83355a54e447881c0&width=1366&height=605&focal=1218,1507" alt="A nova era da cirurgia do joelho" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Estadão
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  A nova era da cirurgia do joelho
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  Robô que contribui com recuperação mais natural e rápida no pós-operatório está disponível nos hospitais ...
-                </p>
-                <a href="https://www.estadao.com.br/saude/a-nova-era-da-cirurgia-do-joelho/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 1 Duplicate - ND+ -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://static.ndmais.com.br/2023/10/lesao-neymar-800x533.jpg" alt="Lesão de ligamento cruzado anterior" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  ND+
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Lesão de ligamento cruzado anterior que tirou Pedro, do Flamengo
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  O primeiro pilar do tratamento é o tempo do ligamento se formar e ficar com resistência equivalente ao antigo. O segundo é o da força muscular.
-                </p>
-                <a href="https://ndmais.com.br/futebol/o-que-e-a-lesao-de-ligamento-cruzado-anterior-que-tirou-pedro-do-flamengo-da-temporada/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 2 Duplicate - Saúde Digital News -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://saudedigitalnews.com.br/wp-content/uploads/2025/09/unnamed-2025-09-16T184105.885-1170x658.jpg" alt="Tecnologia robótica para cirurgia ortopédica" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Saúde Digital News
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Rede D’Or avança no Brasil com inédita tecnologia robótica
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  Brasil, são os primeiros da América Latina a disponibilizarem uma nova tecnologia para cirurgia robótica ortopédica.
-                </p>
-                <a href="https://saudedigitalnews.com.br/16/09/2025/rede-dor-avanca-no-brasil-com-inedita-tecnologia-robotica-para-cirurgia-ortopedica/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 3 Duplicate - IstoÉ Saúde -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://istoesaude.com.br/wp-content/uploads/sites/34/2025/10/a-atividade-fisica-e-fundamental-para-a-prevencao-de-osteoporose.jpg" alt="Osteoporose" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  IstoÉ Saúde
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Perigo de fraturas na velhice: como a osteoporose pode ser evitada
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  A osteoporose afeta mais de 15 milhões de brasileiros, segundo a OMS, e exige cuidados preventivos para reduzir o risco de fraturas.
-                </p>
-                <a href="https://istoesaude.com.br/perigo-de-fraturas-na-velhice-entenda-a-osteoporose-e-saiba-como-se-cuidar" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 4 Duplicate - Healthcare Grupo Mídia -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://wp-microport-gmps.s3.eu-central-1.amazonaws.com/2024/05/Image-Demange-MAY24.jpg" alt="Hospital Vila Nova Star" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Healthcare – Grupo Mídia
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Hospital Vila Nova Star reforça equipe com referência em ortopedia
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  O cirurgião de joelho Marco Demange passa a integrar o Hospital Vila Nova Star, ampliando o uso de tecnologia avançada na unidade.
-                </p>
-                <a href="https://healthcare.grupomidia.com/hospital-vila-nova-star-contrata-estrela-da-ortopedia/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 5 Duplicate - Terra (Beach tennis) -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://p2.trrsf.com/image/fget/cf/1548/0/images.terra.com/2025/12/10/62341735-beachtennis.jpg" alt="Beach tennis Terra" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Terra
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Como reduzir o risco de lesões no beach tennis
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  A modalidade já reúne mais de 1,1 milhão de jogadores no país e pede atenção à prevenção durante os treinos e partidas.
-                </p>
-                <a href="https://www.terra.com.br/vida-e-estilo/saude/beach-tennis-5-dicas-para-reduzir-o-risco-de-lesoes,995587d1c50cd4e0825661ea9063e77cnqk88d7k.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 6 Duplicate - Catraca Livre (Beach tennis) -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://cdn.shopify.com/s/files/1/0805/0556/9577/files/Depositphotos_362216754_S_2048x2048.jpg" alt="Beach tennis em alta" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Catraca Livre
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Beach tennis em alta: cuidados essenciais para evitar lesões
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  O crescimento do beach tennis reforça a importância de seguir orientações simples para uma prática mais segura e saudável.
-                </p>
-                <a href="https://catracalivre.com.br/saude-bem-estar/beach-tennis-5-dicas-para-reduzir-o-risco-de-lesoes/#google_vignette" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 7 Duplicate - Carta Capital (Beach tennis) -->
-            <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
-              <div class="relative overflow-hidden">
-                <img src="https://www.cartacapital.com.br/wp-content/uploads/2025/12/pessoas-beach-tennis-1024x683-1024x683.jpg" alt="Beach tennis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3 bg-gray-900/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                  Carta Capital
-                </div>
-              </div>
-              <div class="p-5">
-                <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2 leading-tight">
-                  Beach tennis: dicas para jogar com menos risco de lesões
-                </h3>
-                <p class="text-sm text-gray-600 mb-4 line-clamp-3 font-light">
-                  Com mais de 1,1 milhão de praticantes no Brasil, o esporte exige cuidados básicos para evitar lesões nas quadras de areia.
-                </p>
-                <a href="https://www.cartacapital.com.br/bem-estar/beach-tennis-5-dicas-para-reduzir-o-risco-de-lesoes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300 group/link">
-                  Ler conteúdo
-                  <svg class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-          </div>
+    <!-- MEDIA-CARDS-END: nao duplicar; o JavaScript cria as copias do loop. -->
+  </div>
         </div>
 
         <!-- Mobile Navigation Arrows -->
         <div class="flex md:hidden justify-center gap-4 mt-6">
-          <button id="media-prev-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <button id="media-prev-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200" type="button" aria-label="Matéria anterior">
             <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
           </button>
-          <button id="media-next-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <button id="media-next-btn-mobile" class="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200" type="button" aria-label="Próxima matéria">
             <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -988,7 +799,7 @@
   </div>
 </section>
 
-    <!-- Cirurgia de Joelho Section -->
+    <!-- ==================== TRATAMENTOS / CIRURGIA DO JOELHO ==================== -->
     <section id="cirurgia-joelho" class="py-40 fade-in-section" style="background: linear-gradient(135deg, var(--brushed-steel), #0e3956);">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-24">
@@ -1006,7 +817,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <!-- New Image Card -->
             <div class="bg-white rounded-lg p-8 fade-in-section flex justify-center items-center">
-              <img src="https://www.demange.com.br/src/joelho3.png" alt="Joelho" class="max-w-full h-auto object-contain">
+              <img src="https://www.demange.com.br/src/joelho3.png" alt="Joelho" class="max-w-full h-auto object-contain" decoding="async">
             </div>
 
             <!-- Prótese de Joelho Robótica -->
@@ -1085,7 +896,7 @@
       </div>
     </section>
 
-    <!-- Technology Section -->
+    <!-- ==================== TECNOLOGIAS ==================== -->
     <section id="tecnologia" class="py-40 bg-white fade-in-section">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-24">
@@ -1113,8 +924,8 @@
                 Essa tecnologia possibilita: Planejamento personalizado antes do corte ósseo, ajuste ideal dos ligamentos para sensação natural do joelho, menor remoção de osso e preservação de tecidos e recuperação mais rápida e segura.
               </p>
               <div class="mt-4 tech-card">
-                <img src="https://www.demange.com.br/src/equip-03.png" alt="Sistema VELYS" class="w-full h-48 object-cover rounded-lg">
-                <a href="https://www.jnjmedtech.com/en-US/product/velys-robotic-assisted-solution" target="_blank" class="tech-overlay">
+                <img src="https://www.demange.com.br/src/equip-03.png" alt="Sistema VELYS" class="w-full h-48 object-cover rounded-lg" decoding="async" loading="lazy">
+                <a href="https://www.jnjmedtech.com/en-US/product/velys-robotic-assisted-solution" target="_blank" class="tech-overlay" rel="noopener">
                   <span class="tech-overlay-text">Saber Mais</span>
                 </a>
               </div>
@@ -1132,8 +943,8 @@
                 Indicado para próteses totais e parciais de joelho, esse robô oferece previsibilidade e redução no risco de desalinhamento. A tecnologia MAKO permite aos cirurgiões realizar cortes ósseos extremamente precisos baseados no planejamento pré-operatório personalizado.
               </p>
               <div class="mt-4 tech-card">
-                <img src="https://www.demange.com.br/src/equip-04.png" alt="Sistema MAKO" class="w-full h-48 object-cover rounded-lg">
-                <a href="https://www.stryker.com/br/pt/joint-replacement/systems/Mako_SmartRobotics_Overview.html" target="_blank" class="tech-overlay">
+                <img src="https://www.demange.com.br/src/equip-04.png" alt="Sistema MAKO" class="w-full h-48 object-cover rounded-lg" decoding="async" loading="lazy">
+                <a href="https://www.stryker.com/br/pt/joint-replacement/systems/Mako_SmartRobotics_Overview.html" target="_blank" class="tech-overlay" rel="noopener">
                   <span class="tech-overlay-text">Saber Mais</span>
                 </a>
               </div>
@@ -1148,11 +959,11 @@
                 O ROSA utiliza sensores e câmeras para mapear a anatomia do paciente em tempo real, auxiliando o cirurgião na execução precisa do plano cirúrgico.
               </p>
               <p class="text-gray-700 font-light leading-relaxed">
-                Com ele, é possível monitorar o alinhamento durante toda a cirurgia, otimizando a estabilidade e a durabilidade do implante. O sistema ROSA proporciona feedback em tempo real, garantindo que cada movimento cirúrgico seja executado com máxima segurança.
+                Monitore o alinhamento otimizando a estabilidade e a durabilidade do implante. O sistema ROSA proporciona feedback em tempo real, garantindo que cada movimento cirúrgico seja seguro.
               </p>
               <div class="mt-4 tech-card">
-                <img src="https://www.demange.com.br/src/equip-02.png" alt="Sistema ROSA" class="w-full h-48 object-cover rounded-lg">
-                <a href="https://www.zimmerbiomet.com/en/products-and-solutions/specialties/knee/rosa--knee-system.html" target="_blank" class="tech-overlay">
+                <img src="https://www.demange.com.br/src/equip-02.png" alt="Sistema ROSA" class="w-full h-48 object-cover rounded-lg" decoding="async" loading="lazy">
+                <a href="https://www.zimmerbiomet.com/en/products-and-solutions/specialties/knee/rosa--knee-system.html" target="_blank" class="tech-overlay" rel="noopener">
                   <span class="tech-overlay-text">Saber Mais</span>
                 </a>
               </div>
@@ -1170,8 +981,8 @@
                 Esta plataforma oferece navegação avançada e controle preciso, permitindo aos cirurgiões realizar procedimentos complexos com confiança e resultados consistentes para cada paciente individual.
               </p>
               <div class="mt-4 tech-card">
-                <img src="https://www.demange.com.br/src/equip-01.png" alt="Sistema Skywalker" class="w-full h-48 object-cover rounded-lg">
-                <a href="https://www.microportortho.com/skywalkerr-robotic-platform" target="_blank" class="tech-overlay">
+                <img src="https://www.demange.com.br/src/equip-01.png" alt="Sistema Skywalker" class="w-full h-48 object-cover rounded-lg" decoding="async" loading="lazy">
+                <a href="https://www.microportortho.com/skywalkerr-robotic-platform" target="_blank" class="tech-overlay" rel="noopener">
                   <span class="tech-overlay-text">Saber Mais</span>
                 </a>
               </div>
@@ -1214,7 +1025,7 @@
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- ==================== CONTEUDOS ==================== -->
     <section id="conteudos" class="py-40 fade-in-section" style="background: linear-gradient(135deg, var(--brushed-steel), #0e3956);">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-24">
@@ -1229,26 +1040,26 @@
 
         <div class="relative max-w-7xl mx-auto">
           <!-- Carousel Controls -->
-          <button id="prev-btn" class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 p-4 text-gray-400 hover:text-gray-900 transition-colors duration-300 hover:scale-110 hidden md:block">
+          <button id="prev-btn" class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 p-4 text-gray-400 hover:text-gray-900 transition-colors duration-300 hover:scale-110 hidden md:block" type="button" aria-label="Conteúdo anterior">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
           </button>
 
-          <button id="next-btn" class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 p-4 text-gray-400 hover:text-gray-900 transition-colors duration-300 hover:scale-110 hidden md:block">
+          <button id="next-btn" class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 p-4 text-gray-400 hover:text-gray-900 transition-colors duration-300 hover:scale-110 hidden md:block" type="button" aria-label="Próximo conteúdo">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </button>
 
           <!-- Mobile Controls -->
-          <button id="prev-btn-mobile" class="absolute left-1 top-1/2 transform -translate-y-1/2 z-10 p-3 text-gray-400 hover:text-gray-900 transition-colors duration-300 md:hidden">
+          <button id="prev-btn-mobile" class="absolute left-1 top-1/2 transform -translate-y-1/2 z-10 p-3 text-gray-400 hover:text-gray-900 transition-colors duration-300 md:hidden" type="button" aria-label="Conteúdo anterior">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
           </button>
 
-          <button id="next-btn-mobile" class="absolute right-1 top-1/2 transform -translate-y-1/2 z-10 p-3 text-gray-400 hover:text-gray-900 transition-colors duration-300 md:hidden">
+          <button id="next-btn-mobile" class="absolute right-1 top-1/2 transform -translate-y-1/2 z-10 p-3 text-gray-400 hover:text-gray-900 transition-colors duration-300 md:hidden" type="button" aria-label="Próximo conteúdo">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -1258,19 +1069,11 @@
 <div class="carousel-container px-12 md:px-0" id="carousel-container">
   <div id="carousel-track" class="carousel-track gap-8" style="cursor: grab; user-select: none;">
 
-
-
-
-
-
-
-
-
-    <!-- Novo Card 1 -->
+    <!-- CONTEUDOS-CARDS-START: editar/adicionar os cards originais abaixo. -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DRSKYHYjbBc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/reel/DRSKYHYjbBc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/thiago-nigro.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="src/thiago-nigro.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
@@ -1283,9 +1086,9 @@
 
     <!-- Novo Card 2 -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DYnopu6oiDR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/reel/DYnopu6oiDR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/senhor-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="src/senhor-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
@@ -1298,9 +1101,9 @@
 
     <!-- Novo Card 3 -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/reels/DOYumzrjSKD/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/reels/DOYumzrjSKD/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/senhora-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="src/senhora-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
@@ -1313,9 +1116,9 @@
 
     <!-- Novo Card 4 -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/equipamento-demange.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="src/equipamento-demange.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
@@ -1328,9 +1131,9 @@
 
     <!-- Novo Card 5 -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/volta-ao-esporte.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="src/volta-ao-esporte.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
@@ -1343,9 +1146,9 @@
 
     <!-- ✅ NOVO Card 1 (PRIMEIRO) -->
     <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DQuvJT5EW9_/?igsh=MXA3M25lcnljdzR6Nw%3D%3D" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.instagram.com/reel/DQuvJT5EW9_/?igsh=MXA3M25lcnljdzR6Nw%3D%3D" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/capa-dmg.png" alt="Dor no quadril ao correr e mecânica de corrida" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/capa-dmg.png" alt="Dor no quadril ao correr e mecânica de corrida" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
@@ -1358,9 +1161,9 @@
 
     <!-- Card 2 -->
     <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/j6VvWYjLH8E" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.youtube.com/shorts/j6VvWYjLH8E" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-01.png" alt="Cirurgia de joelho bem indicada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/CAPAS-01.png" alt="Cirurgia de joelho bem indicada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
@@ -1373,14 +1176,14 @@
 
     <!-- Card 3 -->
     <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/bCTKih-C0C4" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.youtube.com/shorts/bCTKih-C0C4" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-02.png" alt="Cirurgia de joelho transforma vidas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/CAPAS-02.png" alt="Cirurgia de joelho transforma vidas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
           <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Cirurgia de joelho transforma vidas com recuperação funcional</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Paciente relata retorno ao caminhar sem dor diária</p>
+          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Paciente relata retorno ao caminhar sem dor diária, um alivio para mim!</p>
           <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
         </div>
       </a>
@@ -1388,9 +1191,9 @@
 
     <!-- Card 4 -->
     <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/YKQ1IQoH11s" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.youtube.com/shorts/YKQ1IQoH11s" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-03.png" alt="Reportagem UOL cirurgia robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/CAPAS-03.png" alt="Reportagem UOL cirurgia robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
@@ -1403,9 +1206,9 @@
 
     <!-- Card 5 -->
     <div class="carousel-card">
-      <a href="https://www.youtube.com/watch?v=5egq-ECR5g8" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.youtube.com/watch?v=5egq-ECR5g8" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-04.png" alt="Artroplastia total joelho robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/CAPAS-04.png" alt="Artroplastia total joelho robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">VIDEO</div>
@@ -1418,9 +1221,9 @@
 
     <!-- Card 6 -->
     <div class="carousel-card">
-      <a href="https://www.youtube.com/watch?v=pOmIiKttNoM" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
+      <a href="https://www.youtube.com/watch?v=pOmIiKttNoM" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block" rel="noopener">
         <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-05.png" alt="Adiar cirurgia joelho" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <img src="https://www.demange.com.br/src/CAPAS-05.png" alt="Adiar cirurgia joelho" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" decoding="async" loading="lazy">
         </div>
         <div class="p-8">
           <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
@@ -1431,224 +1234,7 @@
       </a>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- ✅ Duplicated cards for infinite loop effect (mesma ordem) -->
-
-
-
-
-
-
-
-
-
-
-    
-
-   
-    <!-- Novo Card 1 -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DRSKYHYjbBc/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/thiago-nigro.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Thiago Nigro mostra sua recuperação após cirurgia</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">O influenciador financeiro compartilha evolução com mobilidade e segurança</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Novo Card 2 -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DYnopu6oiDR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/senhor-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Da dor ao movimento sem limitações novamente</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Paciente se emociona ao falar de sua recuperação com Demange</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Novo Card 3 -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/reels/DOYumzrjSKD/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/senhora-volta-andar.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Como a cirurgia transformou sua qualidade vida</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Veja como a recuperação devolveu mobilidade, confiança e qualidade</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Novo Card 4 -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/equipamento-demange.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">A tecnologia revolucionou cirurgias do joelho definitivamente</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Entenda como a precisão acelera a recuperação com segurança</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Novo Card 5 -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/p/DOGuVUxjXPu/" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="src/volta-ao-esporte.png" alt="Lorem ipsum dolor sit amet consectetur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">REELS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Voltou ao esporte novamente com tudo sem dores</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Veja como a cirurgia permitiu retornar ao esporte sem dores</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- ✅ NOVO Card 1 (PRIMEIRO) -->
-    <div class="carousel-card">
-      <a href="https://www.instagram.com/reel/DQuvJT5EW9_/?igsh=MXA3M25lcnljdzR6Nw%3D%3D" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/capa-dmg.png" alt="Dor no quadril ao correr e mecânica de corrida" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Dor no quadril ao correr e mecânica de corrida</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Você já parou pra pensar se pode ser culpa da sua mecânica de corrida?</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/j6VvWYjLH8E" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-01.png" alt="Cirurgia de joelho bem indicada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Cirurgia de joelho bem indicada com técnica moderna</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Menisco suturado associado reconstrução LCA segura e eficaz</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/bCTKih-C0C4" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-02.png" alt="Cirurgia de joelho transforma vidas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Cirurgia de joelho transforma vidas com recuperação funcional</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Paciente relata retorno ao caminhar sem dor diária</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="carousel-card">
-      <a href="https://www.youtube.com/shorts/YKQ1IQoH11s" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-03.png" alt="Reportagem UOL cirurgia robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Reportagem UOL destaca avanços cirurgia robótica moderna joelho</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Tecnologia aumenta precisão segurança resultados clínicos superiores atuais</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="carousel-card">
-      <a href="https://www.youtube.com/watch?v=5egq-ECR5g8" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-04.png" alt="Artroplastia total joelho robótica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">VIDEO</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Artroplastia total joelho realizada com assistência robótica avançada</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Sistema VELYS melhora alinhamento precisão recuperação paciente cirúrgica</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="carousel-card">
-      <a href="https://www.youtube.com/watch?v=pOmIiKttNoM" target="_blank" class="bg-white hover:bg-gray-50 transition-all duration-300 cursor-pointer group block">
-        <div class="aspect-video bg-gray-100 overflow-hidden">
-          <img src="https://www.demange.com.br/src/CAPAS-05.png" alt="Adiar cirurgia joelho" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        </div>
-        <div class="p-8">
-          <div class="text-xs uppercase tracking-wider text-gray-500 mb-3 font-light">SHORTS</div>
-          <h3 class="text-lg font-light text-gray-900 mb-4 leading-tight">Adiar cirurgia joelho pode agravar quadro funcional progressivamente</h3>
-          <p class="text-sm text-gray-600 mb-6 font-light leading-relaxed">Aumenta riscos quedas perda óssea dor persistente crônica</p>
-          <span class="text-xs uppercase tracking-wider text-gray-900 hover:text-gray-700 font-light transition-colors border-b border-gray-900 pb-1">Acessar</span>
-        </div>
-      </a>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- CONTEUDOS-CARDS-END: nao duplicar; o JavaScript cria as copias do loop. -->
   </div>
 </div>
 
@@ -1663,10 +1249,11 @@
           </a>
         </div>
 
+        </div>
+      </div>
     </section>
 
-
-    <!-- Locais Section -->
+    <!-- ==================== CLINICA / LOCAL ==================== -->
     <section id="locais" class="py-40 bg-white fade-in-section">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-24">
@@ -1683,7 +1270,7 @@
           <!-- Clínica Demange -->
           <div class="bg-gray-50 rounded-lg overflow-hidden fade-in-section">
             <div class="aspect-video">
-              <img src="https://www.demange.com.br/src/clinica-dr-demange-01.png" alt="Clínica Demange" class="w-full h-full object-cover">
+              <img src="https://www.demange.com.br/src/clinica-dr-demange-01.png" alt="Clínica Demange" class="w-full h-full object-cover" decoding="async" loading="lazy">
             </div>
             <div class="p-8 text-center">
               <h3 class="text-xl font-light text-gray-900 mb-4">Clínica Demange</h3>
@@ -1696,7 +1283,7 @@
           <!-- Vila Nova Star -->
           <div class="bg-gray-50 rounded-lg overflow-hidden fade-in-section">
             <div class="aspect-video">
-              <img src="https://www.demange.com.br/src/clinica-dr-demange-02.png" alt="Vila Nova Star" class="w-full h-full object-cover">
+              <img src="https://www.demange.com.br/src/clinica-dr-demange-02.png" alt="Vila Nova Star" class="w-full h-full object-cover" decoding="async" loading="lazy">
             </div>
             <div class="p-8 text-center">
               <h3 class="text-xl font-light text-gray-900 mb-4">Time estruturado</h3>
@@ -1709,7 +1296,7 @@
           <!-- Hospital Albert Einstein -->
           <div class="bg-gray-50 rounded-lg overflow-hidden fade-in-section">
             <div class="aspect-video">
-              <img src="https://www.demange.com.br/src/clinica-dr-demange-03.png" alt="Hospital Albert Einstein" class="w-full h-full object-cover">
+              <img src="https://www.demange.com.br/src/clinica-dr-demange-03.png" alt="Hospital Albert Einstein" class="w-full h-full object-cover" decoding="async" loading="lazy">
             </div>
             <div class="p-8 text-center">
               <h3 class="text-xl font-light text-gray-900 mb-4">Fácil localização</h3>
@@ -1722,7 +1309,7 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ==================== CONTATO / KOMMO ==================== -->
     <section id="contato" class="py-40 fade-in-section" style="background: linear-gradient(135deg, var(--brushed-steel), #0e3956);">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center mb-24">
@@ -1771,7 +1358,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== RODAPE ==================== -->
     <footer class="text-white py-24" style="background-color: #131313;">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="text-center">
@@ -1783,32 +1370,32 @@
           </div>
 
           <div class="flex justify-center space-x-8 mb-16">
-            <a href="https://api.whatsapp.com/send/?phone=5511950555000&text=Ol%C3%A1%21+Vim+pelo+site+e+gostaria+de+agendar+uma+consulta+com+o+Dr.+Marco+Demange.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://api.whatsapp.com/send/?phone=5511950555000&text=Ol%C3%A1%21+Vim+pelo+site+e+gostaria+de+agendar+uma+consulta+com+o+Dr.+Marco+Demange.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Entrar em contato via WhatsApp">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
               </svg>
             </a>
-            <a href="https://www.instagram.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://www.instagram.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Instagram do Dr. Marco Demange">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
             </a>
-            <a href="https://www.facebook.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://www.facebook.com/drmarcodemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="Facebook do Dr. Marco Demange">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            <a href="https://www.tiktok.com/@drdemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://www.tiktok.com/@DrMarcoDemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="TikTok do Dr. Marco Demange">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.849-1.531-1.955-1.531-3.338h-3.97v13.538a3.46 3.46 0 11-3.008-3.436c.142 0 .284.009.424.024V7.172a7.35 7.35 0 00-.424-.024A7.406 7.406 0 002.827 14.554a7.406 7.406 0 007.406 7.406 7.406 7.406 0 007.406-7.406V9.242a10.84 10.84 0 006.361 2.07v-3.97a6.239 6.239 0 01-4.679-1.78z"/>
               </svg>
             </a>
-            <a href="https://www.youtube.com/@dr.marcodemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://www.youtube.com/@DrMarcoDemange/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="YouTube do Dr. Marco Demange">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
-            <a href="https://www.linkedin.com/in/marcodemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110">
+            <a href="https://www.linkedin.com/in/marcodemange" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-110" aria-label="LinkedIn do Dr. Marco Demange">
               <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -1837,13 +1424,6 @@
         </div>
       </div>
 
-
-
-
-
-
-
-      
     </footer>
 
     <!-- Instagram Button -->
@@ -1856,25 +1436,25 @@
     </a>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/5511950555000?text=Olá! Gostaria de agendar uma consulta com o Dr. Marco Demange." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-gentle-pulse-green" aria-label="Entrar em contato via WhatsApp">
+    <a href="https://wa.me/5511950555000?text=Olá! Gostaria de agendar uma consulta com o Dr. Marco Demange." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-gentle-pulse-green" aria-label="Entrar em contato via WhatsApp" rel="noopener">
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
       </svg>
     </a>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-6 left-6 z-50 bg-gray-800 hover:bg-gray-900 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none" aria-label="Voltar ao topo" style="transition: opacity 0.3s ease, transform 0.3s ease;">
+    <button id="back-to-top" class="fixed bottom-6 left-6 z-50 bg-gray-800 hover:bg-gray-900 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none" aria-label="Voltar ao topo" style="transition: opacity 0.3s ease, transform 0.3s ease;" type="button" tabindex="-1">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
       </svg>
     </button>
 
-    <!-- Formação Modal -->
-    <div id="formacao-modal" style="display:none;" class="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden">
+    <!-- ==================== MODAL / FORMACAO ACADEMICA ==================== -->
+    <div id="formacao-modal" style="display:none;" class="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="formacao-modal-title" tabindex="-1">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 lg:px-12 py-6 border-b border-gray-200 flex-shrink-0">
-        <h2 class="text-2xl md:text-3xl font-light text-gray-900">Formação Acadêmica</h2>
-        <button onclick="document.getElementById('formacao-modal').style.display='none'" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+        <h2 class="text-2xl md:text-3xl font-light text-gray-900" id="formacao-modal-title" data-modal-title tabindex="-1">Formação Acadêmica</h2>
+        <button data-modal-close="formacao-modal" class="p-2 hover:bg-gray-100 rounded-full transition-colors" type="button" aria-label="Fechar janela">
           <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
@@ -1884,7 +1464,7 @@
 
           <!-- Block 1 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/unicamp.jpg" alt="Unicamp" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/unicamp.jpg" alt="Unicamp" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Graduação em Medicina - Unicamp</h3>
               <p class="text-gray-700 font-light leading-relaxed">Entre 1995 e 2000, realizou o curso de medicina na Unicamp, em Campinas - SP. A <strong class="font-extrabold text-black">Universidade Estadual de Campinas</strong> é considerada uma das mais importantes escolas médicas do Brasil. Reconhecida por propiciar um excelente curso de graduação em medicina, formando profissionais de alto nível.</p>
@@ -1893,7 +1473,7 @@
 
           <!-- Block 2 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/iot.jpg" alt="IOT HC-USP" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/iot.jpg" alt="IOT HC-USP" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Residência Médica - Hospital das Clínicas da USP</h3>
               <p class="text-gray-700 font-light leading-relaxed">Entre 2001 e 2003, realizou três anos de residência médica em ortopedia e traumatologia no Instituto de Ortopedia e Traumatologia do Hospital das Clínicas da USP. O Instituto de Ortopedia e Traumatologia foi fundado em 1953. Atualmente, composto por dois edifícios. Um deles, com 10 pavimentos e totaliza uma área de 25.000 metros quadrados. Após a residência médica, foi aprovado no Exame Nacional de Especialista em Ortopedia e Traumatologia realizado pela Sociedade Brasileira de Ortopedia e Traumatologia.</p>
@@ -1902,7 +1482,7 @@
 
           <!-- Block 3 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Especialização em Cirurgia do Joelho e Cirurgia do Quadril - Hospital das Clínicas da USP</h3>
               <p class="text-gray-700 font-light leading-relaxed">Após a residência médica, realizou um ano de especialização em cirurgia do joelho e em cirurgia do quadril. Após este período de especialização, tornou-se membro da Sociedade Brasileira de Cirurgia do Joelho, da Sociedade Brasileira de Artroscopia (atual Sociedade Brasileira de Traumatologia Desportiva), e da Sociedade Brasileira de Quadril.</p>
@@ -1911,7 +1491,7 @@
 
           <!-- Block 4 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Mestrado pela <strong class="font-extrabold text-black">Faculdade de Medicina da USP</strong></h3>
               <p class="text-gray-700 font-light leading-relaxed">Após a especialização em Cirurgia do Joelho e Cirurgia do Quadril, realizou Mestrado com estudo clínico sobre cirurgias de prótese de joelho realizadas por meio de técnica minimamente invasiva.</p>
@@ -1920,7 +1500,7 @@
 
           <!-- Block 5 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Doutorado pela <strong class="font-extrabold text-black">Faculdade de Medicina da USP</strong></h3>
               <p class="text-gray-700 font-light leading-relaxed">Em 2010, finalizou Doutorado com a realização de estudo clínico a respeito de cirurgias ósseas (osteotomias), auxiliadas por sistemas de navegação cirúrgica por computador.</p>
@@ -1929,7 +1509,7 @@
 
           <!-- Block 6 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/harvard.jpg" alt="Harvard" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/harvard.jpg" alt="Harvard" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Pós-Doutorado pela Universidade de Harvard - Brigham and Women's Hospital</h3>
               <p class="text-gray-700 font-light leading-relaxed">Entre 2011 e 2012, realizou pós-doutorado na Universidade de Harvard. Durante este período, permaneceu em contato com renomados ortopedistas, desenvolvendo-se em técnicas cirúrgicas para o tratamento de lesões de cartilagem, em cirurgias de próteses parciais e totais de joelho, osteotomias, dentre outras. A Universidade de Harvard e seu complexo médico-hospitalar são mundialmente reconhecidos pelo pioneirismo.</p>
@@ -1938,7 +1518,7 @@
 
           <!-- Block 7 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/surgery.jpg" alt="HSS" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/surgery.jpg" alt="HSS" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Pós-Doutorado pelo Hospital for Special Surgery - Universidade de Cornell</h3>
               <p class="text-gray-700 font-light leading-relaxed">O Hospital for Special Surgery, é o hospital ortopédico mais antigo dos EUA. Por muitos anos, é considerado o melhor centro de ortopedia dos EUA. Trata-se de um centro pioneiro em ortopedia, dentre as diversas técnicas cirúrgicas lá desenvolvidas, destaca-se a cirurgia de prótese de joelho.</p>
@@ -1947,7 +1527,7 @@
 
           <!-- Block 8 -->
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0">
+            <img src="https://www.joelho.com/wp-content/uploads/2020/06/usp.jpg" alt="USP" class="w-24 h-auto rounded-lg flex-shrink-0" decoding="async">
             <div>
               <h3 class="text-xl font-medium text-gray-900 mb-3">Livre-Docência pela <strong class="font-extrabold text-black">Faculdade de Medicina da USP</strong></h3>
               <p class="text-gray-700 font-light leading-relaxed">Em 2017, realizou Livre-Docência tornando-se Professor Associado da <strong class="font-extrabold text-black">Faculdade de Medicina da USP</strong>. Além das defesa pública do Memorial, das provas e da aula didática, apresentou Tese com estudo clínico de Subcondroplastia no tratamento de osteoartrite do joelho e fraturas subcondrais.</p>
@@ -1956,7 +1536,7 @@
 
           <!-- Back button -->
           <div class="text-center pt-6 pb-4">
-            <button onclick="document.getElementById('formacao-modal').style.display='none'" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-10 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300">
+            <button data-modal-close="formacao-modal" class="inline-block border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-10 py-3 text-sm font-light uppercase tracking-wider transition-all duration-300" type="button">
               Voltar
             </button>
           </div>
@@ -1964,12 +1544,12 @@
       </div>
     </div>
 
-    <!-- Artigos Científicos Modal -->
-    <div id="artigos-modal" style="display:none;" class="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden">
+    <!-- ==================== MODAL / ARTIGOS CIENTIFICOS ==================== -->
+    <div id="artigos-modal" style="display:none;" class="fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="artigos-modal-title" tabindex="-1">
       <!-- Header -->
       <div class="flex items-center justify-between px-6 lg:px-12 py-6 border-b border-gray-200 flex-shrink-0">
-        <h2 class="text-2xl md:text-3xl font-light text-gray-900">Artigos Científicos Dr. Marco Demange</h2>
-        <button onclick="document.getElementById('artigos-modal').style.display='none'" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+        <h2 class="text-2xl md:text-3xl font-light text-gray-900" id="artigos-modal-title" data-modal-title tabindex="-1">Artigos Científicos Dr. Marco Demange</h2>
+        <button data-modal-close="artigos-modal" class="p-2 hover:bg-gray-100 rounded-full transition-colors" type="button" aria-label="Fechar janela">
           <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
@@ -1980,11 +1560,11 @@
           <!-- Platform links -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4761940Z3" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-6 border border-gray-200 rounded-lg hover:shadow-md transition-all duration-300">
-              <img src="https://www.joelho.com/wp-content/themes/demange-theme/dist/images/logo-cnpq.jpg" alt="CNPq Lattes" class="w-20 h-auto flex-shrink-0">
+              <img src="https://www.joelho.com/wp-content/themes/demange-theme/dist/images/logo-cnpq.jpg" alt="CNPq Lattes" class="w-20 h-auto flex-shrink-0" decoding="async">
               <p class="text-gray-700 font-light">Acesse a lista completa de artigos na <span class="font-medium">Plataforma Lattes</span>.</p>
             </a>
             <a href="https://www.teses.usp.br/index.php?option=com_jumi&fileid=17&Itemid=160&id=17A4319D4211&lang=pt-br" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-6 border border-gray-200 rounded-lg hover:shadow-md transition-all duration-300">
-              <img src="https://www.joelho.com/wp-content/themes/demange-theme/dist/images/logo-biblioteca-digital.jpg" alt="Biblioteca Digital USP" class="w-20 h-auto flex-shrink-0">
+              <img src="https://www.joelho.com/wp-content/themes/demange-theme/dist/images/logo-biblioteca-digital.jpg" alt="Biblioteca Digital USP" class="w-20 h-auto flex-shrink-0" decoding="async">
               <p class="text-gray-700 font-light">As teses de Mestrado e Doutorado estão disponíveis na <span class="font-medium">plataforma de Teses da USP</span>.</p>
             </a>
           </div>
@@ -2218,8 +1798,6 @@
 <p class="text-gray-700 font-light leading-relaxed">DEMANGE, Marco K. ; CAMANHO, G. L. ; VIEGAS, A. C. ; HERNANDEZ, A. J. . Estudo prospectivo e comparativo entre o tratamento conservador e o cirúrgico. Reparação do ligamento femoro-patelar medial nas luxações agudas da patela. <em>Revista Portuguesa de Ortopedia e Traumatologia</em>, v. 13, p. 1-15, 2005.</p>
 
 <p class="text-gray-700 font-light leading-relaxed">DEMANGE, Marco K. ; SANTOS, A. O. ; PINHEIRO, V. R. ; BRANDALISE, S. R. ; SEVERICHE, A. F. A. ; ETCHEBEHERE, E. C. S. C. ; RAMOS, C. D. ; CAMARGO, E. E. . Scintigraphic follow-up of the effects of therapy with hydroxyurea on splenic function in patients with sickle cell disease. <em>The Journal of Nuclear Medicine</em>.</p>
-            
-
 
             </div>
           </div>
@@ -2228,382 +1806,336 @@
       </div>
     </div>
 
+    <!-- ==================== JAVASCRIPT DO SITE ==================== -->
     <script>
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
+/* JAVASCRIPT DO SITE | independente do Analytics e do formulario Kommo. */
+(() => {
+  'use strict';
+  const byId = id => document.getElementById(id);
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const scrollBehavior = () => motion.matches ? 'auto' : 'smooth';
 
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
+  // 01. MENU MOBILE: estado acessivel, Escape e fechamento ao navegar.
+  const menuButton = byId('mobile-menu-btn');
+  const menu = byId('mobile-menu');
+  const desktop = window.matchMedia('(min-width: 1024px)');
+  function setMenu(open, restoreFocus = false) {
+    if (!menu || !menuButton) return;
+    menu.classList.toggle('open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menu.inert = !open;
+    if (restoreFocus) menuButton.focus({ preventScroll: true });
+  }
+  if (menuButton && menu) {
+    setMenu(false);
+    menuButton.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.addEventListener('click', event => {
+      if (event.target.closest('a')) setMenu(false);
+    });
+    const onDesktop = event => { if (event.matches) setMenu(false); };
+    if (desktop.addEventListener) desktop.addEventListener('change', onDesktop);
+    else desktop.addListener(onDesktop);
+  }
+
+  // 02. MODAIS: conteudo original, controle de foco e rolagem do fundo.
+  let activeModal = null;
+  let modalTrigger = null;
+  let previousBodyOverflow = '';
+  let previousHtmlOverflow = '';
+  let previousBodyPadding = '';
+  let inertSiblings = [];
+  const focusable = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  const getFocusable = root => Array.from(root.querySelectorAll(focusable))
+    .filter(element => element.getClientRects().length && !element.closest('[inert]'));
+  function closeModal(restoreFocus = true) {
+    if (!activeModal) return;
+    activeModal.style.display = 'none';
+    activeModal = null;
+    document.body.style.overflow = previousBodyOverflow;
+    document.documentElement.style.overflow = previousHtmlOverflow;
+    document.body.style.paddingRight = previousBodyPadding;
+    inertSiblings.forEach(([element, value]) => { element.inert = value; });
+    inertSiblings = [];
+    if (restoreFocus && modalTrigger && modalTrigger.isConnected) {
+      modalTrigger.focus({ preventScroll: true });
+    }
+    modalTrigger = null;
+  }
+  function openModal(id, trigger) {
+    const modal = byId(id);
+    if (!modal) return;
+    closeModal(false);
+    modalTrigger = trigger;
+    previousBodyOverflow = document.body.style.overflow;
+    previousHtmlOverflow = document.documentElement.style.overflow;
+    previousBodyPadding = document.body.style.paddingRight;
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbar > 0) {
+      const padding = parseFloat(getComputedStyle(document.body).paddingRight) || 0;
+      document.body.style.paddingRight = `${padding + scrollbar}px`;
+    }
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    Array.from(document.body.children).forEach(element => {
+      if (element === modal || ['SCRIPT', 'STYLE', 'LINK'].includes(element.tagName)) return;
+      inertSiblings.push([element, element.inert]);
+      element.inert = true;
+    });
+    activeModal = modal;
+    modal.style.display = 'flex';
+    const target = modal.querySelector('[data-modal-title]') || modal;
+    target.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', event => {
+    const open = event.target.closest('[data-modal-open]');
+    if (open) { openModal(open.dataset.modalOpen, open); return; }
+    if (event.target.closest('[data-modal-close]')) closeModal();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      if (activeModal) { event.preventDefault(); closeModal(); }
+      else if (menu && menu.classList.contains('open')) setMenu(false, true);
+      return;
+    }
+    if (event.key !== 'Tab' || !activeModal) return;
+    const items = getFocusable(activeModal);
+    if (!items.length) { event.preventDefault(); activeModal.focus(); return; }
+    const first = items[0];
+    const last = items[items.length - 1];
+    const current = document.activeElement;
+    if (event.shiftKey && (current === first || !items.includes(current))) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && (current === last || !items.includes(current))) {
+      event.preventDefault(); first.focus();
+    }
+  });
+
+  // 03. CARROSSEIS: editar somente os cards originais no HTML.
+  // As copias visuais sao automaticas; os textos originais permanecem estaticos.
+  function initCarousel({ trackId, previousIds, nextIds, label }) {
+    const track = byId(trackId);
+    if (!track || track.dataset.carouselReady) return;
+    const originals = Array.from(track.children);
+    if (!originals.length) return;
+    const count = originals.length;
+    const viewport = track.parentElement;
+    track.dataset.carouselReady = 'true';
+    track.setAttribute('role', 'group');
+    track.setAttribute('aria-roledescription', 'carrossel');
+    track.setAttribute('aria-label', label);
+    const fragment = document.createDocumentFragment();
+    originals.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.dataset.carouselClone = 'true';
+      clone.setAttribute('aria-hidden', 'true');
+      // Evita IDs duplicados e paradas de teclado nas copias do loop.
+      clone.removeAttribute('id');
+      clone.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+      clone.querySelectorAll(focusable).forEach(node => node.setAttribute('tabindex', '-1'));
+      fragment.appendChild(clone);
+    });
+    track.appendChild(fragment);
+    const cards = Array.from(track.children);
+    let index = 0;
+    let offsets = [];
+    let locked = false;
+    let animationTimer = 0;
+    let resizeFrame = 0;
+    let drag = null;
+    let suppressClickUntil = 0;
+    const transition = 'transform 0.5s ease-out';
+
+    function measure() {
+      const first = cards[0].getBoundingClientRect().left;
+      // Medicao real: respeita padding, gap, largura e arredondamento do CSS.
+      offsets = cards.map(card => card.getBoundingClientRect().left - first);
+    }
+    function render(animate = false) {
+      track.style.transition = animate && !motion.matches ? transition : 'none';
+      track.style.transform = `translateX(-${offsets[index] || 0}px)`;
+    }
+    function finish() {
+      clearTimeout(animationTimer);
+      if (index >= count) { index %= count; render(false); }
+      locked = false;
+    }
+    function move(direction) {
+      if (locked || count < 2) return;
+      locked = true;
+      if (direction < 0 && index === 0) {
+        index = count;
+        render(false);
+        // Confirma a posicao equivalente antes de animar para o ultimo card.
+        void track.offsetWidth;
+      }
+      index += direction;
+      render(true);
+      if (motion.matches) finish();
+      else animationTimer = window.setTimeout(finish, 580);
+    }
+    track.addEventListener('transitionend', event => {
+      if (event.target === track && event.propertyName === 'transform' && locked) finish();
+    });
+    previousIds.forEach(id => {
+      const button = byId(id);
+      if (button) button.addEventListener('click', () => move(-1));
+    });
+    nextIds.forEach(id => {
+      const button = byId(id);
+      if (button) button.addEventListener('click', () => move(1));
+    });
+
+    // Um gesto vertical continua rolando a pagina; um gesto horizontal move cards.
+    track.addEventListener('pointerdown', event => {
+      if (locked || !event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      drag = { id: event.pointerId, x: event.clientX, y: event.clientY, distance: 0, horizontal: false };
+    });
+    track.addEventListener('pointermove', event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      if (event.pointerType === 'mouse' && !(event.buttons & 1)) {
+        endDrag(event, true); return;
+      }
+      const dx = event.clientX - drag.x;
+      const dy = event.clientY - drag.y;
+      if (!drag.horizontal) {
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
+        if (Math.abs(dy) > Math.abs(dx)) { drag = null; return; }
+        drag.horizontal = true;
+        if (index === 0 && dx > 0) { index = count; render(false); }
+        track.setPointerCapture(event.pointerId);
+        track.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+      }
+      if (event.cancelable) event.preventDefault();
+      drag.distance = dx;
+      // Limita o arraste a um card por gesto, sem expor a extremidade do trilho.
+      const step = (offsets[1] || viewport.clientWidth);
+      const distance = Math.max(-step, Math.min(step, dx));
+      track.style.transform = `translateX(${-(offsets[index] || 0) + distance}px)`;
+    });
+    function endDrag(event, cancelled = false) {
+      if (!drag || event.pointerId !== drag.id) return;
+      const ended = drag;
+      drag = null;
+      if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+      track.style.cursor = 'grab';
+      if (!ended.horizontal) return;
+      suppressClickUntil = performance.now() + 400;
+      if (index === count && ended.distance < 0) { index = 0; render(false); }
+      if (!cancelled && Math.abs(ended.distance) > 50) {
+        move(ended.distance < 0 ? 1 : -1);
+      } else {
+        locked = true;
+        render(true);
+        if (motion.matches) finish();
+        else animationTimer = window.setTimeout(finish, 580);
+      }
+    }
+    track.addEventListener('pointerleave', () => {
+      if (drag && !drag.horizontal) drag = null;
+    });
+    track.addEventListener('pointerup', event => endDrag(event));
+    track.addEventListener('pointercancel', event => endDrag(event, true));
+    track.addEventListener('lostpointercapture', event => {
+      // Em touch, a captura implicita sai da imagem para o trilho.
+      if (event.target === track) endDrag(event, true);
+    });
+    track.addEventListener('dragstart', event => event.preventDefault());
+    track.addEventListener('click', event => {
+      if (performance.now() < suppressClickUntil) {
+        event.preventDefault(); event.stopPropagation();
+      }
+    }, true);
+    track.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    track.addEventListener('focusin', event => {
+      const position = originals.findIndex(card => card.contains(event.target));
+      if (position < 0 || drag) return;
+      const card = originals[position].getBoundingClientRect();
+      const bounds = viewport.getBoundingClientRect();
+      if (card.left < bounds.left - 1 || card.right > bounds.right + 1) {
+        clearTimeout(animationTimer); locked = false;
+        index = position; viewport.scrollLeft = 0; render(false);
+      }
+    });
+    function refresh() {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        clearTimeout(animationTimer); locked = false;
+        drag = null; track.style.cursor = 'grab';
+        index %= count;
+        measure(); render(false);
       });
+    }
+    measure(); render(false);
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(refresh);
+      resizeObserver.observe(viewport);
+      originals.forEach(card => resizeObserver.observe(card));
+    } else window.addEventListener('resize', refresh, { passive: true });
+    if (document.fonts) document.fonts.ready.then(refresh);
+  }
+  initCarousel({
+    trackId: 'carousel-track',
+    previousIds: ['prev-btn', 'prev-btn-mobile'],
+    nextIds: ['next-btn', 'next-btn-mobile'],
+    label: 'Conte\u00fados do Dr. Marco Demange'
+  });
+  initCarousel({
+    trackId: 'media-carousel-track',
+    previousIds: ['media-prev-btn', 'media-prev-btn-mobile'],
+    nextIds: ['media-next-btn', 'media-next-btn-mobile'],
+    label: 'Dr. Marco Demange na m\u00eddia'
+  });
 
-      // Close mobile menu when clicking on links
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-        });
+  // 04. ANIMACOES: nao deixam o conteudo oculto sem suporte ou sem JavaScript.
+  const revealElements = document.querySelectorAll('.fade-in-section');
+  if ('IntersectionObserver' in window && !motion.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(element => observer.observe(element));
+    document.documentElement.classList.add('js-reveal');
+  } else revealElements.forEach(element => element.classList.add('is-visible'));
 
-      // Header scroll effect
-      const header = document.getElementById('header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          header.classList.add('shadow-sm');
-        } else {
-          header.classList.remove('shadow-sm');
-        }
-      });
-
-      // Carousel functionality with infinite loop
-      let currentIndex = 0;
-      const carouselTrack = document.getElementById('carousel-track');
-      const cards = carouselTrack.children;
-      const totalCards = cards.length;
-      const originalCardsCount = 11; // Number of original cards (before duplication)
-
-      // Drag/Swipe functionality variables
-      let isDragging = false;
-      let startX = 0;
-      let currentX = 0;
-      let dragStartIndex = 0;
-      let dragDistance = 0;
-
-      function updateCarousel(smooth = true) {
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        
-        if (!smooth) {
-          carouselTrack.style.transition = 'none';
-        } else {
-          carouselTrack.style.transition = 'transform 0.5s ease-out';
-        }
-        
-        const translateX = isMobile ? 
-          -currentIndex * 100 : 
-          -currentIndex * (100 / cardsPerView);
-        
-        carouselTrack.style.transform = `translateX(${translateX}%)`;
-      }
-
-      function nextSlide() {
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        
-        currentIndex++;
-        updateCarousel(true);
-        
-        // Check if we need to reset to beginning for seamless loop
-        const maxIndex = isMobile ? originalCardsCount : originalCardsCount;
-        if (currentIndex >= maxIndex) {
-          setTimeout(() => {
-            currentIndex = 0;
-            updateCarousel(false);
-            // Re-enable transition after reset
-            setTimeout(() => {
-              carouselTrack.style.transition = 'transform 0.5s ease-out';
-            }, 50);
-          }, 500);
-        }
-      }
-
-      function prevSlide() {
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        
-        if (currentIndex <= 0) {
-          // Jump to the duplicated section at the end
-          currentIndex = originalCardsCount;
-          updateCarousel(false);
-          setTimeout(() => {
-            currentIndex = originalCardsCount - 1;
-            updateCarousel(true);
-          }, 50);
-        } else {
-          currentIndex--;
-          updateCarousel(true);
-        }
-      }
-
-      // Drag/Swipe event handlers
-      function handleDragStart(e) {
-        isDragging = true;
-        dragStartIndex = currentIndex;
-        startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-        currentX = startX;
-        
-        carouselTrack.style.cursor = 'grabbing';
-        carouselTrack.style.transition = 'none';
-      }
-
-      function handleDragMove(e) {
-        if (!isDragging) return;
-        
-        e.preventDefault();
-        currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-        dragDistance = startX - currentX;
-        
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        const currentOffset = isMobile ? 
-          dragStartIndex * 100 : 
-          dragStartIndex * (100 / cardsPerView);
-        const dragOffset = (dragDistance / carouselTrack.offsetWidth) * 100;
-        
-        carouselTrack.style.transform = `translateX(-${currentOffset + dragOffset}%)`;
-      }
-
-      function handleDragEnd() {
-        if (!isDragging) return;
-        
-        isDragging = false;
-        carouselTrack.style.cursor = 'grab';
-        carouselTrack.style.transition = 'transform 0.5s ease-out';
-        
-        const threshold = 50;
-        
-        if (Math.abs(dragDistance) > threshold) {
-          if (dragDistance > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
-        } else {
-          updateCarousel();
-        }
-        
-        dragDistance = 0;
-      }
-
-      // Add drag/swipe event listeners
-      // Mouse events
-      carouselTrack.addEventListener('mousedown', handleDragStart);
-      document.addEventListener('mousemove', handleDragMove);
-      document.addEventListener('mouseup', handleDragEnd);
-      document.addEventListener('mouseleave', handleDragEnd);
-      
-      // Touch events
-      carouselTrack.addEventListener('touchstart', handleDragStart, { passive: false });
-      carouselTrack.addEventListener('touchmove', handleDragMove, { passive: false });
-      carouselTrack.addEventListener('touchend', handleDragEnd);
-
-      // Desktop carousel controls
-      document.getElementById('next-btn').addEventListener('click', nextSlide);
-      document.getElementById('prev-btn').addEventListener('click', prevSlide);
-
-      // Mobile carousel controls
-      document.getElementById('next-btn-mobile').addEventListener('click', nextSlide);
-      document.getElementById('prev-btn-mobile').addEventListener('click', prevSlide);
-
-      // Update carousel on window resize
-      window.addEventListener('resize', updateCarousel);
-
-      // Initialize carousel
-      updateCarousel();
-
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, observerOptions);
-
-      // Observe all elements with fade-in-section class
-      const elements = document.querySelectorAll('.fade-in-section');
-      elements.forEach(el => observer.observe(el));
-
-      // Initialize animations on load
-      window.addEventListener('load', () => {
-        const fadeElements = document.querySelectorAll('.fade-in-section');
-        fadeElements.forEach(el => observer.observe(el));
-      });
-
-      // Logo click to scroll to top
-      document.querySelector('.logo-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-      // Back to Top Button functionality
-      const backToTopBtn = document.getElementById('back-to-top');
-      
-      function toggleBackToTopBtn() {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        
-        if (scrollPercent > 40) {
-          backToTopBtn.style.opacity = '1';
-          backToTopBtn.style.pointerEvents = 'auto';
-        } else {
-          backToTopBtn.style.opacity = '0';
-          backToTopBtn.style.pointerEvents = 'none';
-        }
-      }
-      
-      // Show/hide back to top button on scroll
-      window.addEventListener('scroll', toggleBackToTopBtn);
-      
-      // Back to top button click handler
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-      // Media Carousel functionality with infinite loop
-      let mediaCurrentIndex = 0;
-      const mediaCarouselTrack = document.getElementById('media-carousel-track');
-      const mediaCards = mediaCarouselTrack.children;
-      const mediaTotalCards = mediaCards.length;
-      const mediaOriginalCardsCount = 9; // Number of original cards (before duplication)
-
-      // Media Drag/Swipe functionality variables
-      let mediaIsDragging = false;
-      let mediaStartX = 0;
-      let mediaCurrentX = 0;
-      let mediaDragStartIndex = 0;
-      let mediaDragDistance = 0;
-
-      function updateMediaCarousel(smooth = true) {
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        
-        if (!smooth) {
-          mediaCarouselTrack.style.transition = 'none';
-        } else {
-          mediaCarouselTrack.style.transition = 'transform 0.5s ease-out';
-        }
-        
-        // Calculate card width including gap
-        const gap = 24; // 1.5rem = 24px
-        const containerWidth = mediaCarouselTrack.parentElement.offsetWidth;
-        const cardWidth = isMobile ? containerWidth : (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
-        
-        const translateX = mediaCurrentIndex * (cardWidth + gap);
-        
-        mediaCarouselTrack.style.transform = `translateX(-${translateX}px)`;
-      }
-
-      function mediaNextSlide() {
-        const isMobile = window.innerWidth < 768;
-        
-        mediaCurrentIndex++;
-        updateMediaCarousel(true);
-        
-        // Check if we need to reset to beginning for seamless loop
-        const maxIndex = mediaOriginalCardsCount;
-        if (mediaCurrentIndex >= maxIndex) {
-          setTimeout(() => {
-            mediaCurrentIndex = 0;
-            updateMediaCarousel(false);
-            // Re-enable transition after reset
-            setTimeout(() => {
-              mediaCarouselTrack.style.transition = 'transform 0.5s ease-out';
-            }, 50);
-          }, 500);
-        }
-      }
-
-      function mediaPrevSlide() {
-        if (mediaCurrentIndex <= 0) {
-          // Jump to the duplicated section at the end
-          mediaCurrentIndex = mediaOriginalCardsCount;
-          updateMediaCarousel(false);
-          setTimeout(() => {
-            mediaCurrentIndex = mediaOriginalCardsCount - 1;
-            updateMediaCarousel(true);
-          }, 50);
-        } else {
-          mediaCurrentIndex--;
-          updateMediaCarousel(true);
-        }
-      }
-
-      // Media Drag/Swipe event handlers
-      function handleMediaDragStart(e) {
-        mediaIsDragging = true;
-        mediaDragStartIndex = mediaCurrentIndex;
-        mediaStartX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
-        mediaCurrentX = mediaStartX;
-        
-        mediaCarouselTrack.style.cursor = 'grabbing';
-        mediaCarouselTrack.style.transition = 'none';
-      }
-
-      function handleMediaDragMove(e) {
-        if (!mediaIsDragging) return;
-        
-        e.preventDefault();
-        mediaCurrentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-        mediaDragDistance = mediaStartX - mediaCurrentX;
-        
-        const isMobile = window.innerWidth < 768;
-        const cardsPerView = isMobile ? 1 : 3;
-        const gap = 24;
-        const containerWidth = mediaCarouselTrack.parentElement.offsetWidth;
-        const cardWidth = isMobile ? containerWidth : (containerWidth - (gap * (cardsPerView - 1))) / cardsPerView;
-        
-        const currentOffset = mediaDragStartIndex * (cardWidth + gap);
-        
-        mediaCarouselTrack.style.transform = `translateX(-${currentOffset + mediaDragDistance}px)`;
-      }
-
-      function handleMediaDragEnd() {
-        if (!mediaIsDragging) return;
-        
-        mediaIsDragging = false;
-        mediaCarouselTrack.style.cursor = 'grab';
-        mediaCarouselTrack.style.transition = 'transform 0.5s ease-out';
-        
-        const threshold = 50;
-        
-        if (Math.abs(mediaDragDistance) > threshold) {
-          if (mediaDragDistance > 0) {
-            mediaNextSlide();
-          } else {
-            mediaPrevSlide();
-          }
-        } else {
-          updateMediaCarousel();
-        }
-        
-        mediaDragDistance = 0;
-      }
-
-      // Add media carousel drag/swipe event listeners
-      // Mouse events
-      mediaCarouselTrack.addEventListener('mousedown', handleMediaDragStart);
-      document.addEventListener('mousemove', handleMediaDragMove);
-      document.addEventListener('mouseup', handleMediaDragEnd);
-      
-      // Touch events
-      mediaCarouselTrack.addEventListener('touchstart', handleMediaDragStart, { passive: false });
-      mediaCarouselTrack.addEventListener('touchmove', handleMediaDragMove, { passive: false });
-      mediaCarouselTrack.addEventListener('touchend', handleMediaDragEnd);
-
-      // Media Desktop carousel controls
-      document.getElementById('media-next-btn').addEventListener('click', mediaNextSlide);
-      document.getElementById('media-prev-btn').addEventListener('click', mediaPrevSlide);
-
-      // Media Mobile carousel controls
-      document.getElementById('media-next-btn-mobile').addEventListener('click', mediaNextSlide);
-      document.getElementById('media-prev-btn-mobile').addEventListener('click', mediaPrevSlide);
-
-      // Update media carousel on window resize
-      window.addEventListener('resize', updateMediaCarousel);
-
-      // Initialize media carousel
-      updateMediaCarousel();
+  // 05. ROLAGEM: um unico listener passivo, sem calculos repetidos por evento.
+  const header = byId('header');
+  const backToTop = byId('back-to-top');
+  let scrollFrame = 0;
+  function updateScroll() {
+    scrollFrame = 0;
+    if (header) header.classList.toggle('shadow-sm', window.scrollY > 50);
+    if (backToTop) {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      const visible = available > 0 && window.scrollY / available > 0.4;
+      backToTop.style.opacity = visible ? '1' : '0';
+      backToTop.style.pointerEvents = visible ? 'auto' : 'none';
+      backToTop.tabIndex = visible ? 0 : -1;
+    }
+  }
+  function requestScrollUpdate() {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll);
+  }
+  window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+  window.addEventListener('resize', requestScrollUpdate, { passive: true });
+  window.addEventListener('pageshow', requestScrollUpdate);
+  if (backToTop) backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: scrollBehavior() });
+  });
+  const logo = document.querySelector('.logo-link');
+  if (logo) logo.addEventListener('click', event => {
+    event.preventDefault(); setMenu(false);
+    window.scrollTo({ top: 0, behavior: scrollBehavior() });
+  });
+  updateScroll();
+})();
     </script>
   </body>
 </html>
